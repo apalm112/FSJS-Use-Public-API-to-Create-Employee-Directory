@@ -12,7 +12,7 @@ function displayRandomUser(data) {
 		randoHTML += '<li class="box">' + data.results[idx].location.city + '</li>';
 		randoHTML += '</ul>';
 	});
-	$('.boxes').html(randoHTML);
+	$('.container_12').html(randoHTML);
 }	// end displayRandomUser()
 
 function displayModal(data) {
