@@ -1,7 +1,7 @@
-/* Main Styles ******************************/
-
+/*  Base Styles -------------------------------------------------- */
 * {
-	border: 1px black solid;
+	/*border: 1px black solid;*/
+	box-sizing: border-box;
 }
 
 body {
@@ -14,13 +14,13 @@ h1 {
 
 ul {
 	list-style: none;
+	width: 535px;
+	float: right;
+	margin-top: 45px;
 }
 
 li {
-	width: 45%;
-	height: 230px;
-	/* adds room btwn bottom of border */
-	margin-bottom: 35px;
+	line-height: 35px;
 }
 
 img {
@@ -28,29 +28,33 @@ img {
 	height: 145px;
 	border-radius: 100%;
 	float: left;
+	margin-top: 25px;
+	margin-left: 20px;
 }
 
-p {
+/* Main Styles -------------------------------------------------- */
 
-}
-
-
-
-.boxes {
-	border: 3px solid #DEE2E3;
+ul {
+	margin: 50px 50px 45px 135px;
+	display: inline;
+	/*border: 3px solid #DEE2E3;*/
 	border-radius: 15px;
-	margin: 30px 165px 20px 50px;
-	width: 475px;
-	padding-top: 45px;
-	padding-left: 25px;
 }
 
 .box {
-	margin: 0 165px 0 0;
-	display: inline;
+	border: 3px solid blue;
+	border-radius: 15px;
+	/*max-width: 32%;  OR */
+	width: 540px;
+	height: 215px;
+
 }
 
 
-#rando_list {
-	margin: 0 auto;
+.name {
+	font-weight: bold;
 }
+
+/*div ul li {
+	max-width: 33%;
+}*/

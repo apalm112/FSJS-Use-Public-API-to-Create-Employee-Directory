@@ -3,15 +3,16 @@
 
 
 function displayRandomUser(data) {
-	let randoHTML = '<ul class="boxes">';
+	let randoHTML = '';
 	$.each(data.results, function(idx, picture) {
-		randoHTML += '<li class="box"><img src="' + data.results[idx].picture.medium + '">';
-		randoHTML += '<p>' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</p>';
-		randoHTML += '<p>' + data.results[idx].email + '</p>';
-		randoHTML += '<p>' + data.results[idx].location.city + '</p></li>';
+		randoHTML += '<ul>';
+		randoHTML += '<img src=' + data.results[idx].picture.medium + '>';
+		randoHTML += '<li class="rando_li name">' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
+		randoHTML += '<li class="rando_li">' + data.results[idx].email + '</li>';
+		randoHTML += '<li class="rando_li">' + data.results[idx].location.city + '</li>';
+		randoHTML += '</ul>';
 	});
-	randoHTML += '</ul>';
-	$('#rando_list').html(randoHTML);
+	$('.box').html(randoHTML);
 }	// end displayRandomUser()
 
 function displayModal(data) {
@@ -24,6 +25,8 @@ $.ajax({
 	dataType: 'json',
 	success: function(data) {
 		console.log(data);
+		console.log(data.results[0].picture.medium);
+
 		displayRandomUser(data);
 	}
 });	// end .ajax()
