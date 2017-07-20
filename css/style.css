@@ -1,11 +1,12 @@
 /*  Base Styles -------------------------------------------------- */
 * {
-	/*border: 1px black solid;*/
-	box-sizing: border-box;
+	border: 1px black solid;
+	text-align: center;
 }
 
 body {
 	background: #fffcf7;
+	box-sizing: border-box;
 }
 
 h1 {
@@ -20,6 +21,7 @@ ul {
 }
 
 li {
+	display: inline;
 	line-height: 35px;
 }
 
@@ -41,20 +43,55 @@ ul {
 	border-radius: 15px;
 }
 
-.box {
-	border: 3px solid blue;
-	border-radius: 15px;
-	/*max-width: 32%;  OR */
-	width: 540px;
-	height: 215px;
-
+/* 960 GRID */
+.article {
+	margin: 20px 0px 10px 10px;
+	padding: 10px 0 5px 0;
+	height: 300px;
+	width: 725px;
+	background-color: #efefef;
+	border: 2px solid grey;
+	border-radius: 10px;
+	margin: 10px 10px;
 }
-
 
 .name {
 	font-weight: bold;
 }
 
 /*div ul li {
-	max-width: 33%;
+max-width: 33%;
 }*/
+
+.boxes {
+	/*border: 3px solid blue;
+	border-radius: 15px;*/
+	/*max-width: 32%;  OR */
+	/*width: 540px;
+	height: 215px;*/
+}
+
+/* ------------------------ */
+.boxes {
+  width: 480px;
+  margin: 3em auto 0;
+ }
+
+  .boxes .box {
+    background: #EFEFEF;
+    width: 355px;
+    height: 80px;
+    float: right;
+    margin-right: 0;
+    margin-bottom: 0;
+    padding: 0.75em;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: 0.2s ease;
+  /*  background-size: 100px 100px;
+    background-repeat: no-repeat;
+    background-position: center center;*/
+	}
+    .boxes .box:nth-child(3n) {
+      /*margin-right: 0;*/
+		 }

@@ -7,12 +7,12 @@ function displayRandomUser(data) {
 	$.each(data.results, function(idx, picture) {
 		randoHTML += '<ul>';
 		randoHTML += '<img src=' + data.results[idx].picture.medium + '>';
-		randoHTML += '<li class="rando_li name">' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
-		randoHTML += '<li class="rando_li">' + data.results[idx].email + '</li>';
-		randoHTML += '<li class="rando_li">' + data.results[idx].location.city + '</li>';
+		randoHTML += '<li class="box name">' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
+		randoHTML += '<li class="box">' + data.results[idx].email + '</li>';
+		randoHTML += '<li class="box">' + data.results[idx].location.city + '</li>';
 		randoHTML += '</ul>';
 	});
-	$('.box').html(randoHTML);
+	$('.boxes').html(randoHTML);
 }	// end displayRandomUser()
 
 function displayModal(data) {
