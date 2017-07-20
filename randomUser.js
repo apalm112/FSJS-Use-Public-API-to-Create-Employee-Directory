@@ -3,21 +3,19 @@
 
 
 function displayRandomUser(data) {
-	let randoHTML = '<ul>';
+	let randoHTML = '<ul class="boxes">';
 	$.each(data.results, function(idx, picture) {
-		randoHTML += '<li><img src="' + data.results[idx].picture.medium + '"></li>';
-		randoHTML += '<li>' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
-		randoHTML += '<li>' + data.results[idx].email + '</li>';
-		randoHTML += '<li>' + data.results[idx].location.city + '</li>';
+		randoHTML += '<li class="box"><img src="' + data.results[idx].picture.medium + '">';
+		randoHTML += '<p>' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</p>';
+		randoHTML += '<p>' + data.results[idx].email + '</p>';
+		randoHTML += '<p>' + data.results[idx].location.city + '</p></li>';
 	});
 	randoHTML += '</ul>';
-	$('#rando').html(randoHTML);
+	$('#rando_list').html(randoHTML);
 }	// end displayRandomUser()
 
 function displayModal(data) {
 	// Get data for the modal on user click.
-	
-
 }
 
 
@@ -25,6 +23,7 @@ $.ajax({
 	url: 'https://randomuser.me/api/?results=12&nat=us',
 	dataType: 'json',
 	success: function(data) {
+		console.log(data);
 		displayRandomUser(data);
 	}
 });	// end .ajax()
