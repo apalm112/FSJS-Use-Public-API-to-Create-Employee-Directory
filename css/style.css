@@ -1,7 +1,6 @@
 /*  Base Styles -------------------------------------------------- */
 * {
 	border: 1px black solid;
-	text-align: center;
 }
 
 body {
@@ -11,21 +10,30 @@ body {
 
 h1 {
 	font-size: 30px;
+	margin-left: 200px;
 }
 
 ul {
+	background-color: aliceblue;
 	list-style: none;
-	width: 535px;
+	width: 475px;
+	height: 220px;
 	float: right;
-	margin-top: 45px;
+	margin: 50px 40px 45px 0px;
+	display: inline;
+	border: 3px solid #DEE2E3;
+	border-radius: 15px;
 }
 
 li {
-	display: inline;
-	line-height: 35px;
+	display: inline-block;
+	line-height: 1em;
+	text-align: left;
+	float: right;
 }
 
 img {
+
 	width: 145px;
 	height: 145px;
 	border-radius: 100%;
@@ -34,14 +42,47 @@ img {
 	margin-left: 20px;
 }
 
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
 /* Main Styles -------------------------------------------------- */
 
-ul {
-	margin: 50px 50px 45px 135px;
-	display: inline;
-	/*border: 3px solid #DEE2E3;*/
-	border-radius: 15px;
+/* NEED CHILD Selector here! OR sumthin' like that */
+/* ~ is for sibling */
+/*ul:nth-child(0n+2) {
+	margin-right: 40px;
+}*/
+/* ----------------------------------------------------------------
+			use a 906Grid column layout style inside of the ul that     -
+		contains the img & li's.  Col One can holds the img						-
+		Col Two holds the three li's
+		then they can be positioned per the rubric: 					;				-
+		Use the 12-column layout!																			-
+																																	-
+																																	-
+																																	-
+ ----------------------------------------------------------------- */
+
+ul :nth-child(2) {
+	margin-right: 180px;
+	background-color: pink;
 }
+ul :nth-child(3) {
+	/*margin-right: 20px;*/
+	background-color: lime;
+}
+ul :nth-child(4) {
+	margin-right: 238px;
+	background-color: brown;
+}
+
 
 /* 960 GRID */
 .article {
