@@ -1,0 +1,72 @@
+/*  Base Styles -------------------------------------------------- */
+* {
+	box-sizing: border-box;
+	max-width: 100%;
+	/*border: 1px black solid;*/
+}
+
+body {
+	max-width: 100%;
+	margin: 0 auto;
+	background: #fffcf7;
+}
+
+h1 {
+	font-size: 30px;
+	margin-left: 200px;
+}
+
+/* Container Styles -------------------------------------------------- */
+.article ul {
+	background-color: aliceblue;
+	list-style: none;
+	width: 530px;
+	height: 200px;
+	float: left;
+	margin: 20px 20px 20px 130px;
+	display: inline-block;
+	border: 3px solid #DEE2E3;
+	border-radius: 12px;
+}
+
+.article li {
+	display: inline-block;
+	line-height: 1em;
+	float: left;
+	width: 231px;
+}
+
+.article img {
+	width: 145px;
+	height: 145px;
+	border-radius: 100%;
+	float: left;
+	margin-top: 25px;
+	margin-left: 20px;
+}
+
+ul :nth-child(2) {
+	/* Name */
+	margin-top: 75px;
+	margin-right: 30px;
+}
+ul :nth-child(3) {
+	/* Email */
+	margin-right: 70px;
+}
+ul :nth-child(4) {
+	/* City */
+}
+/* 960 GRID */
+.grid_1, .grid_2, .grid_3 {
+	max-width: 30%;
+	float: left;
+	margin: 10px 0;
+}
+.container {
+	overflow: auto;
+	height: 100%;
+}
+.name {
+	font-weight: bold;
+}

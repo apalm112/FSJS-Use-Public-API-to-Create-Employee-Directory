@@ -3,21 +3,43 @@
 
 
 function displayRandomUser(data) {
-	let randoHTML = '<ul>';
+	let randoHTML = '';
+	let randoHTML2 = '';
+	let randoHTML3 = '';
 	$.each(data.results, function(idx, picture) {
-		randoHTML += '<li><img src="' + data.results[idx].picture.medium + '"></li>';
-		randoHTML += '<li>' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
-		randoHTML += '<li>' + data.results[idx].email + '</li>';
-		randoHTML += '<li>' + data.results[idx].location.city + '</li>';
-	});
-	randoHTML += '</ul>';
-	$('#rando').html(randoHTML);
+		if ( idx <= 3 ) {
+			randoHTML += '<ul>';
+			randoHTML += '<img src=' + data.results[idx].picture.medium + '>';
+			randoHTML += '<li class="box name">' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
+			randoHTML += '<li class="box">' + data.results[idx].email + '</li>';
+			randoHTML += '<li class="box">' + data.results[idx].location.city + '</li>';
+		}
+			randoHTML += '</ul>';
+	if ( idx >= 4 && idx <= 7 ) {
+		randoHTML2 += '<ul>';
+		randoHTML2 += '<img src=' + data.results[idx].picture.medium + '>';
+		randoHTML2 += '<li class="box name">' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
+		randoHTML2 += '<li class="box">' + data.results[idx].email + '</li>';
+		randoHTML2 += '<li class="box">' + data.results[idx].location.city + '</li>';
+	}
+		randoHTML2 += '</ul>';
+		if ( idx >= 8 ) {
+			randoHTML3 += '<ul>';
+			randoHTML3 += '<img src=' + data.results[idx].picture.medium + '>';
+			randoHTML3 += '<li class="box name">' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
+			randoHTML3 += '<li class="box">' + data.results[idx].email + '</li>';
+			randoHTML3 += '<li class="box">' + data.results[idx].location.city + '</li>';
+		}
+			randoHTML3 += '</ul>';
+});
+	$('.grid_1').html(randoHTML);
+	$('.grid_2').html(randoHTML2);
+	$('.grid_3').html(randoHTML3);
+
 }	// end displayRandomUser()
 
 function displayModal(data) {
 	// Get data for the modal on user click.
-	
-
 }
 
 
@@ -25,6 +47,9 @@ $.ajax({
 	url: 'https://randomuser.me/api/?results=12&nat=us',
 	dataType: 'json',
 	success: function(data) {
+		console.log(data);
+		console.log(data.results[0].picture.medium);
+
 		displayRandomUser(data);
 	}
 });	// end .ajax()
