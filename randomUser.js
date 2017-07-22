@@ -11,24 +11,24 @@ function displayRandomUser(data) {
 			randoHTML += '<ul>';
 			randoHTML += '<img src=' + data.results[idx].picture.medium + '>';
 			randoHTML += '<li class="box name">' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
-			randoHTML += '<li class="box">' + data.results[idx].email + '</li>';
-			randoHTML += '<li class="box">' + data.results[idx].location.city + '</li>';
+			randoHTML += '<li class="box">' + data.results[idx].login.username + '</li>';
+			randoHTML += '<li class="box">' + data.results[idx].location.city + ', ' + data.results[idx].nat + '</li>';
 		}
 			randoHTML += '</ul>';
 	if ( idx >= 4 && idx <= 7 ) {
 		randoHTML2 += '<ul>';
 		randoHTML2 += '<img src=' + data.results[idx].picture.medium + '>';
 		randoHTML2 += '<li class="box name">' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
-		randoHTML2 += '<li class="box">' + data.results[idx].email + '</li>';
-		randoHTML2 += '<li class="box">' + data.results[idx].location.city + '</li>';
+		randoHTML2 += '<li class="box">' + data.results[idx].login.username + '</li>';
+		randoHTML2 += '<li class="box">' + data.results[idx].location.city + ', ' + data.results[idx].nat + '</li>';
 	}
 		randoHTML2 += '</ul>';
 		if ( idx >= 8 ) {
 			randoHTML3 += '<ul>';
 			randoHTML3 += '<img src=' + data.results[idx].picture.medium + '>';
 			randoHTML3 += '<li class="box name">' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
-			randoHTML3 += '<li class="box">' + data.results[idx].email + '</li>';
-			randoHTML3 += '<li class="box">' + data.results[idx].location.city + '</li>';
+			randoHTML3 += '<li class="box">' + data.results[idx].login.username + '</li>';
+			randoHTML3 += '<li class="box">' + data.results[idx].location.city + ', ' + data.results[idx].nat + '</li>';
 		}
 			randoHTML3 += '</ul>';
 });
@@ -55,13 +55,6 @@ $.ajax({
 });	// end .ajax()
 
 /*	Project Instructions:
-			Get and display 12 random users from The Random User Generator API
-			Using photos and information that the API provides, you’ll display 12 users, along with some basic information:
-			Image
-			First and Last Name
-			Username
-			City & Country
-
 			Create a modal window that will pop up when any part of the user’s row is clicked. The following details should display in the modal window:
 			Image
 			Name
