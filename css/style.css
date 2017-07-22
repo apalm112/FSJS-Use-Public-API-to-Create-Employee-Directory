@@ -1,11 +1,14 @@
 /*  Base Styles -------------------------------------------------- */
 * {
-	border: 1px black solid;
+	box-sizing: border-box;
+	max-width: 100%;
+	/*border: 1px black solid;*/
 }
 
 body {
+	max-width: 100%;
+	margin: 0 auto;
 	background: #fffcf7;
-	box-sizing: border-box;
 }
 
 h1 {
@@ -13,27 +16,27 @@ h1 {
 	margin-left: 200px;
 }
 
-ul {
+/* Container Styles -------------------------------------------------- */
+.article ul {
 	background-color: aliceblue;
 	list-style: none;
-	width: 475px;
-	height: 220px;
-	float: right;
-	margin: 50px 40px 45px 0px;
-	display: inline;
+	width: 530px;
+	height: 200px;
+	float: left;
+	margin: 20px 20px 20px 130px;
+	display: inline-block;
 	border: 3px solid #DEE2E3;
-	border-radius: 15px;
+	border-radius: 12px;
 }
 
-li {
+.article li {
 	display: inline-block;
 	line-height: 1em;
-	text-align: left;
-	float: right;
+	float: left;
+	width: 231px;
 }
 
-img {
-
+.article img {
 	width: 145px;
 	height: 145px;
 	border-radius: 100%;
@@ -42,97 +45,28 @@ img {
 	margin-left: 20px;
 }
 
-footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  background-color: #efefef;
-  text-align: center;
-}
-
-/* Main Styles -------------------------------------------------- */
-
-/* NEED CHILD Selector here! OR sumthin' like that */
-/* ~ is for sibling */
-/*ul:nth-child(0n+2) {
-	margin-right: 40px;
-}*/
-/* ----------------------------------------------------------------
-			use a 906Grid column layout style inside of the ul that     -
-		contains the img & li's.  Col One can holds the img						-
-		Col Two holds the three li's
-		then they can be positioned per the rubric: 					;				-
-		Use the 12-column layout!																			-
-																																	-
-																																	-
-																																	-
- ----------------------------------------------------------------- */
-
 ul :nth-child(2) {
-	margin-right: 180px;
-	background-color: pink;
+	/* Name */
+	margin-top: 75px;
+	margin-right: 30px;
 }
 ul :nth-child(3) {
-	/*margin-right: 20px;*/
-	background-color: lime;
+	/* Email */
+	margin-right: 70px;
 }
 ul :nth-child(4) {
-	margin-right: 238px;
-	background-color: brown;
+	/* City */
 }
-
-
 /* 960 GRID */
-.article {
-	margin: 20px 0px 10px 10px;
-	padding: 10px 0 5px 0;
-	height: 300px;
-	width: 725px;
-	background-color: #efefef;
-	border: 2px solid grey;
-	border-radius: 10px;
-	margin: 10px 10px;
+.grid_1, .grid_2, .grid_3 {
+	max-width: 30%;
+	float: left;
+	margin: 10px 0;
 }
-
+.container {
+	overflow: auto;
+	height: 100%;
+}
 .name {
 	font-weight: bold;
 }
-
-/*div ul li {
-max-width: 33%;
-}*/
-
-.boxes {
-	/*border: 3px solid blue;
-	border-radius: 15px;*/
-	/*max-width: 32%;  OR */
-	/*width: 540px;
-	height: 215px;*/
-}
-
-/* ------------------------ */
-.boxes {
-  width: 480px;
-  margin: 3em auto 0;
- }
-
-  .boxes .box {
-    background: #EFEFEF;
-    width: 355px;
-    height: 80px;
-    float: right;
-    margin-right: 0;
-    margin-bottom: 0;
-    padding: 0.75em;
-    cursor: pointer;
-    box-sizing: border-box;
-    transition: 0.2s ease;
-  /*  background-size: 100px 100px;
-    background-repeat: no-repeat;
-    background-position: center center;*/
-	}
-    .boxes .box:nth-child(3n) {
-      /*margin-right: 0;*/
-		 }
