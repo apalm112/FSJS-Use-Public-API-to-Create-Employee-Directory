@@ -48,12 +48,10 @@ let cloud = {};
 		dataType: 'json',
 		success: function(data) {
 			Object.assign(cloud, data);
-			console.log(data);
 			console.log(cloud);
 			console.log(data.results[0].picture.medium);
 			console.log(cloud.results[0].picture.medium);
 			displayRandomUser(data);
-			// buildUserModal(cloud);
 			displayModal(cloud);
 			hideModal();
 		}
@@ -86,8 +84,19 @@ let cloud = {};
 		let userInfoDiv = '<div class="modal-user-info"></div>';
 		$('.user-modal').append(userInfoDiv);
 		let modalHTML = '';
-		modalHTML += '<ul><li>';
-		modalHTML += '<img src=' + cloud.results[targetElement].picture.medium + '></li></ul>';
+		modalHTML += '<ul>';
+		modalHTML += '<li><img src=' + cloud.results[targetElement].picture.medium + '></li>';
+		modalHTML += '<li>' + cloud.results[targetElement].name.first + '</li>';
+		modalHTML += '<li>' + cloud.results[targetElement].name.last + '</li>';
+		modalHTML += '<li>' + cloud.results[targetElement].email + '</li>';
+		modalHTML += '<p>-------------------------------------------------------</p>';
+		modalHTML += '<li>' + cloud.results[targetElement].location.city + '</li>';
+		modalHTML += '<li>' + cloud.results[targetElement].location.street + '</li>';
+		modalHTML += '<li>' + cloud.results[targetElement].location.state + '</li>';
+		modalHTML += '<li>' + cloud.results[targetElement].location.postcode + '</li>';
+		modalHTML += '<li>' + cloud.results[targetElement].dob + '</li>';
+		modalHTML += '</ul>';
+
 		$('.modal-user-info').html(modalHTML);
 	}	// end buildUserModal()
 
