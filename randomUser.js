@@ -86,15 +86,15 @@ let cloud = {};
 		let modalHTML = '';
 		modalHTML += '<ul>';
 		modalHTML += '<li><img src=' + cloud.results[targetElement].picture.medium + '></li>';
-		modalHTML += '<li>' + cloud.results[targetElement].name.first + '</li>';
-		modalHTML += '<li>' + cloud.results[targetElement].name.last + '</li>';
+		modalHTML += '<li>' + cloud.results[targetElement].name.first + ' ' +  cloud.results[targetElement].name.last + '</li>';
+		modalHTML += '<li>' + cloud.results[targetElement].login.username + '</li>';
 		modalHTML += '<li>' + cloud.results[targetElement].email + '</li>';
-		modalHTML += '<p>-------------------------------------------------------</p>';
-		modalHTML += '<li>' + cloud.results[targetElement].location.city + '</li>';
+		modalHTML += '<li>-------------------------------------------------------</li>';
+		modalHTML += '<li>' + cloud.results[targetElement].cell + '</li>';
+
 		modalHTML += '<li>' + cloud.results[targetElement].location.street + '</li>';
-		modalHTML += '<li>' + cloud.results[targetElement].location.state + '</li>';
-		modalHTML += '<li>' + cloud.results[targetElement].location.postcode + '</li>';
-		modalHTML += '<li>' + cloud.results[targetElement].dob + '</li>';
+		modalHTML += '<li>' + cloud.results[targetElement].location.city + ', ' + cloud.results[targetElement].location.state + ' ' + cloud.results[targetElement].location.postcode + '</li>';
+		modalHTML += '<li>Birthday: ' + cloud.results[targetElement].dob + '</li>';
 		modalHTML += '</ul>';
 
 		$('.modal-user-info').html(modalHTML);
@@ -109,25 +109,22 @@ let cloud = {};
 
 
 	/* *********************************************************/
+	//	TODO:  create a new function which will format the user info data for proper display in the modal.  DOB: 09/22/76   State: change Arkansas to AR
+		//  And the rest of teh CSS for
+		function formatModalData() {
+
+		}
+
+
+
 	/****************************************************************************/
 
 })(window);
 
 	/*	Project Instructions:
-				Create a modal window that will pop up when any part of the user’s row is clicked. The following details should display in the modal window:
-				Image
-				Name
-				Username
-				Email
-				Cell Number
-				Detailed Address, including street name and number, city, country and post code.
-				Birthdate
-				There is a way to close the modal window
-
 				Structure and style the user directory so that it roughly matches the provide mockup.
 				Display the users in a grid or table
-				Add a hover state to the rows of the user table.
-				Make sure there’s a way to close the modal window
+------->Add a hover state to the rows of the user table.	<--------------
 
 				PUSH GOALS:
 				TODO: Employees can be filtered by name or username

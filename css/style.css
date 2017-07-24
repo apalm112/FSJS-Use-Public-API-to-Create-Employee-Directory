@@ -105,8 +105,21 @@ ul :nth-child(4) {
 	visibility: visible;
 	tranisition: all 0.4s;
 }
+.modal-user-info li {
+	display: block;
+	line-height: 2em;
+	text-align: center;
+	width: 420px;
+}
 
-
+.modal-user-info img {
+	width: 145px;
+	height: 145px;
+	border-radius: 100%;
+	
+	margin-top: 25px;
+	margin-left: 20px;
+}
 
 
 
