@@ -53,23 +53,22 @@ let cloud = {};
 			console.log(data.results[0].picture.medium);
 			console.log(cloud.results[0].picture.medium);
 			displayRandomUser(data);
-			displayModal(data);
-			hideModal(data);
+			// buildUserModal(cloud);
+			displayModal(cloud);
+			hideModal();
 		}
 	});	// end .ajax()
 
-	function displayModal(data) {
+	function displayModal(cloud) {
 		// Functino to Get & Display data for the modal on user click.
-		// Creates a div to display the user info & appends to DOM
-		let userInfoDiv = '<div class="modal-user-info"></div>';
-		$('.user-modal').append(userInfoDiv);
 
 		// Click on any ul elem triggers function to display THAT ul's user info.
 		$('.rando').click(function() {
-			buildUserModal(data);
+			var targetElement = $('.rando').index(this);
+			buildUserModal(cloud, targetElement);
 			$('.modal').fadeIn(200);
 			$('.user-modal').toggleClass('out in');
-		});
+		});	// end $.click()
 	}	// end displayModal()
 
 	function hideModal(data) {
@@ -81,27 +80,27 @@ let cloud = {};
 		})
 	}	// end hideModal()
 
-	/* *********************************************************/
-	function buildUserModal(data) {
+	function buildUserModal(cloud, targetElement) {
 		// Function to build the DOM elems to hold the user info
-		// TODO:	The idx of the ul clicked on can be passed into buildUserModal(userInfo) to display the currentTarget info.
-		// Add the idx of user in Cloud to the ul class,
-		// then when clicked, use that idx to display matching modal info
-
-		let	modalHTML = '<ul><img src=' + cloud.results[3].picture.medium + '></li></ul>';
+		// Creates a div to display the user info & appends to DOM
+		let userInfoDiv = '<div class="modal-user-info"></div>';
+		$('.user-modal').append(userInfoDiv);
+		let modalHTML = '';
+		modalHTML += '<ul><li>';
+		modalHTML += '<img src=' + cloud.results[targetElement].picture.medium + '></li></ul>';
 		$('.modal-user-info').html(modalHTML);
-
 	}	// end buildUserModal()
-	/****************************************************************************/
 
 	function emptyUserModal() {
-		// Function to empty out modal div of all user info, to get the modal ready for the next time it is loaded.
-		$('.modal-user-info').children().remove();
-	}	// end emptyUserModal()
+		// Function to remove modal div of all user info, this gets the modal ready for the next time it is loaded.
+		$('.modal-user-info').remove();
+	}
 
 
 
 
+	/* *********************************************************/
+	/****************************************************************************/
 
 })(window);
 
