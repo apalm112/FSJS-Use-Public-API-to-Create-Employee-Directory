@@ -18,14 +18,14 @@
 				randoHTML += '<li class="box">' + data.results[idx].location.city + ', ' + data.results[idx].nat + '</li>';
 			}
 				randoHTML += '</ul>';
-		if ( idx >= 4 && idx <= 7 ) {
-			randoHTML2 += '<ul class="rando">';
-			randoHTML2 += '<img src=' + data.results[idx].picture.medium + '>';
-			randoHTML2 += '<li class="box name">' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
-			randoHTML2 += '<li class="box">' + data.results[idx].login.username + '</li>';
-			randoHTML2 += '<li class="box">' + data.results[idx].location.city + ', ' + data.results[idx].nat + '</li>';
-		}
-			randoHTML2 += '</ul>';
+			if ( idx >= 4 && idx <= 7 ) {
+				randoHTML2 += '<ul class="rando">';
+				randoHTML2 += '<img src=' + data.results[idx].picture.medium + '>';
+				randoHTML2 += '<li class="box name">' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
+				randoHTML2 += '<li class="box">' + data.results[idx].login.username + '</li>';
+				randoHTML2 += '<li class="box">' + data.results[idx].location.city + ', ' + data.results[idx].nat + '</li>';
+			}
+				randoHTML2 += '</ul>';
 			if ( idx >= 8 ) {
 				randoHTML3 += '<ul class="rando">';
 				randoHTML3 += '<img src=' + data.results[idx].picture.medium + '>';
@@ -38,7 +38,6 @@
 		$('.grid_1').html(randoHTML);
 		$('.grid_2').html(randoHTML2);
 		$('.grid_3').html(randoHTML3);
-
 	}	// end displayRandomUser()
 
 	$.ajax({
@@ -49,12 +48,13 @@
 			console.log(data.results[0].picture.medium);
 
 			displayRandomUser(data);
-			displayModal();	// ONLY CALLS IT ONCE!
+			displayModal();
 		}
 	});	// end .ajax()
 
 	function displayModal(data) {
 		// Get & Display data for the modal on user click.
+		displayRandomUserModal(data);
 		$('.rando').click(function() {
 			$('.modal').fadeIn(200);
 			$('.user-modal').toggleClass('out in');
@@ -63,8 +63,33 @@
 			$('.modal').fadeOut(200);
 			$('.user-modal').toggleClass('out in');
 		})
-	}
+	}	// end displayModal()
 
+
+	/* *********************************************************/
+	function displayRandomUserModal(data) {
+		// TODO:	Try putting initial data Object from the .ajax() into an array, const userInfo=[];
+		// 			Then access userInfo for displayRandomUser(userInfo);
+		// 			and for displayRandomUserModal(userInfo);
+		// 			The idx of the ul clicked on can be passed into displayRandomUserModal(userInfo) to display the currentTarget info.
+
+
+
+
+
+
+
+		console.log('displayRandomUserModal has run!!!!!!');
+		let modalHTML = '';
+		modalHTML += '<ul>';
+		// modalHTML += '<img src=' + data.results[idx].picture.medium + '></li>';
+		// 		modalHTML += '</ul>';
+
+		// $('.user-modal').html(modalHTML);
+
+
+	}	// end displayRandomUserModal()
+	/****************************************************************************/
 
 
 })(window);
