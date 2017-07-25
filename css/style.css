@@ -11,7 +11,7 @@ h1 {
 	font-size: 30px;
 	margin-left: 130px;
 	margin-top: 70px;
-	color: grey;
+	color: #636161;
 }
 li {
 	color: grey;
@@ -22,8 +22,8 @@ li {
 }*/
 .article ul {
 	list-style: none;
-	width: 530px;
-	height: 200px;
+	width: 480px;
+	height: 210px;
 	float: left;
 	margin: 20px 20px 20px 130px;
 	display: inline-block;
@@ -33,10 +33,11 @@ li {
 .article li {
 	display: inline-block;
 	width: 231px;
-	line-height: 1.7em;
+	line-height: 1.55em;
 	text-align: left;
 	margin-left: 30px;
 	text-transform: capitalize;
+	font-size: 0.89em;
 }
 .article img {
 	width: 145px;
@@ -48,18 +49,20 @@ li {
 }
 ul :nth-child(2) {
 	/* Name */
-	margin-top: 40px;
+	margin-top: 50px;
 	margin-right: 30px;
+	margin-bottom: 3px;
 	text-emphasis: bold;
 	color: #000;
+	font-size: 1em;
 }
 ul :nth-child(3) {
 	/* Email */
-	margin-right: 70px;
+	margin-right: 35px;
 }
 /* GRID Layout ----------------------------------------------------- */
 .grid_1, .grid_2, .grid_3 {
-	max-width: 30%;
+	max-width: 27.5%;
 	float: left;
 	margin: 10px 0;
 }
