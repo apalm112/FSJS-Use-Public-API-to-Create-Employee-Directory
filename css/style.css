@@ -1,7 +1,6 @@
 /*  Base Styles -------------------------------------------------- */
 * {
 	box-sizing: border-box;
-	max-width: 100%;
 }
 body {
 	margin: 0 auto;
@@ -15,6 +14,10 @@ h1 {
 }
 li {
 	color: grey;
+}
+img {
+	 /* For images, so they never exceed their container's width */
+	max-width: 100%;
 }
 /* Container Styles -------------------------------------------------- */
 /*.wrapper {
@@ -96,9 +99,8 @@ ul :nth-child(3) {
 	right: 10px;
 	font-size: 1em;
 	cursor: pointer;
-	margin-right: 40px;
+	margin-right: 20px;
 	margin-top: 5px
-
 }
 .out {
 	top: -30%;
@@ -156,7 +158,7 @@ ul :nth-child(3) {
 .modal-user-info ul :nth-child(4) {
 	/* USER NAME */
 	margin-left: 95px;
-	margin-right: 140px;
+	margin-right: 145px;
 }
 .modal-user-info ul :nth-child(5) {
 	/* CIRCLE RIGHT */
@@ -176,9 +178,13 @@ ul :nth-child(3) {
 	Margin-bottom: 30px;
 }
 /* Modal Switch Layout ------------------------------------------ */
-.icon-circle-left:before {
-	content: "\ea44";
+.icon-circle-left:before .color-hover {
+	/*content: "\ea44";*/
+	background: rgba(0,0,0,0.7);
+
 }
-.icon-circle-right:before {
-  content: "\ea42";
+.icon-circle-right:before .color-hover{
+  /*content: "\ea42";*/
+	background: rgba(0,0,0,0.7);
+
 }

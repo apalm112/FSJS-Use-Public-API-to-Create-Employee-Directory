@@ -43,20 +43,6 @@ let cloud = {};
 		$('.grid_3').html(randoHTML3);
 	}	// end displayRandomUser()
 
-	$.ajax({
-		// url: 'https://randomuser.me/api/?results=12&nat=us',
-		url: 'https://randomuser.me/api/?results=12',
-		dataType: 'json',
-		success: function(data) {
-			Object.assign(cloud, data);
-			console.log(cloud);
-			displayRandomUser(data);
-			displayModal(cloud);
-			hideModal();
-			hoverState();
-		}
-	});	// end .ajax()
-
 	function displayModal(cloud) {
 		// Functino to Get & Display data for the modal on user click.
 
@@ -87,9 +73,9 @@ let cloud = {};
 		modalHTML += '<ul>';
 		modalHTML += '<li><img src=' + cloud.results[targetElement].picture.medium + '></li>';
 		modalHTML += '<li>' + cloud.results[targetElement].name.first + ' ' +  cloud.results[targetElement].name.last + '</li>';
-		modalHTML += '<span class="icon-circle-left"></span>';
+		// modalHTML += '<span class="icon-circle-left"></span>';
 		modalHTML += '<li>' + cloud.results[targetElement].login.username + '</li>';
-		modalHTML += '<span class="icon-circle-right"></span>';
+		// modalHTML += '<span class="icon-circle-right"></span>';
 		modalHTML += '<li>' + cloud.results[targetElement].email + '</li>';
 		modalHTML += '<li class="line">---------------------------------------------------------</li>';
 
@@ -142,14 +128,52 @@ let cloud = {};
 	}
 
 	/* ********************************************************/
-	function modalSwitch() {
-	/* TODO:	Functionality added to switch back and forth between employees when the detail modal window is open. */
+	function circleLeftHover() {
+		let $left = $('.icon-circle-left');
+		$left.hover(function() {
+			$(this).css({'color': '#140823'});
+			$(this).css({'background': 'rgba(7,7,7,0.7)'});
+		}, function() {
+				$(this).css({'color': '#636161'});
+				$(this).css({'background': '#fffcf7'});
+		});
+	}
+	function circleRightHover() {
+		// add a hover & click functions to control icomoons
+		let $ah = $('.icon-circle-right');
+		$ah.hover(function() {
+			$(this).css({'color': '#140823'});
+			$(this).css({'background': 'rgba(7,7,7,0.7)'});
+		}, function() {
+				$(this).css({'color': '#636161'});
+				$(this).css({'background': '#fffcf7'});
+		});
+	}
 
-
-
-
-	}	//	end modalSwitch()
 	/****************************************************************************/
+
+	$(document).ready(function() {
+		$.ajax({
+			// url: 'https://randomuser.me/api/?results=12&nat=us',
+			url: 'https://randomuser.me/api/?results=12',
+			dataType: 'json',
+			success: function(data) {
+				Object.assign(cloud, data);
+				console.log(cloud);
+				displayRandomUser(data);
+				displayModal(cloud);
+				// hideModal();
+				// hoverState();
+			}
+		});	// end .ajax()
+		hideModal();
+		hoverState();
+		circleLeftHover()
+		circleRightHover();
+
+	});
+
+
 })(window);
 
 
