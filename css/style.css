@@ -1,62 +1,68 @@
 /*  Base Styles -------------------------------------------------- */
 * {
 	box-sizing: border-box;
-	/*max-width: 100%;*/
-	/*border: 1px black solid;*/
+	max-width: 100%;
 }
 body {
-	/*max-width: 100%;*/
 	margin: 0 auto;
 	background: #fffcf7;
 }
 h1 {
 	font-size: 30px;
-	margin-left: 200px;
+	margin-left: 130px;
+	margin-top: 70px;
+	color: #636161;
+}
+li {
+	color: grey;
 }
 /* Container Styles -------------------------------------------------- */
+/*.wrapper {
+	max-width: 100%;
+}*/
 .article ul {
-	background-color: aliceblue;
 	list-style: none;
-	width: 530px;
-	height: 200px;
+	width: 480px;
+	height: 210px;
 	float: left;
 	margin: 20px 20px 20px 130px;
 	display: inline-block;
 	border: 3px solid #DEE2E3;
 	border-radius: 12px;
 }
-
 .article li {
 	display: inline-block;
-	line-height: 1em;
-	float: left;
 	width: 231px;
+	line-height: 1.55em;
+	text-align: left;
+	margin-left: 30px;
+	text-transform: capitalize;
+	font-size: 0.89em;
 }
-
 .article img {
 	width: 145px;
 	height: 145px;
 	border-radius: 100%;
 	float: left;
 	margin-top: 25px;
-	margin-left: 20px;
+	margin-left: -10px;
 }
-
 ul :nth-child(2) {
 	/* Name */
-	margin-top: 75px;
+	margin-top: 50px;
 	margin-right: 30px;
+	margin-bottom: 3px;
+	text-emphasis: bold;
+	color: #000;
+	font-size: 1em;
 }
 ul :nth-child(3) {
 	/* Email */
-	margin-right: 70px;
+	margin-right: 35px;
 }
-ul :nth-child(4) {
-	/* City */
-}
-/* 960 GRID */
+/* GRID Layout ----------------------------------------------------- */
 .grid_1, .grid_2, .grid_3 {
-	max-width: 30%;
+	max-width: 27.5%;
 	float: left;
 	margin: 10px 0;
 }
@@ -88,75 +94,62 @@ ul :nth-child(4) {
 	position: absolute;
 	top: 10px;
 	right: 10px;
-	font-size: 2em;
+	font-size: 1em;
 	cursor: pointer;
+	margin-right: 40px;
+	margin-top: 5px
+
 }
 .out {
 	top: -30%;
 	left: -15%;
 	opacity: 0;
 	visibility: hidden;
-	tranisition: all 0.4s;
+	transition: all 0.4s;
 }
 .in {
 	left: 34%;
 	top: 20%;
 	opacity: 1;
 	visibility: visible;
-	tranisition: all 0.4s;
+	transition: all 0.4s;
 }
 .modal-user-info li {
 	display: block;
 	line-height: 2em;
 	text-align: center;
 	width: 420px;
+	margin-left: -14px;
+	color: grey;
 }
-
+.modal-user-info .line {
+	text-decoration: line-through;
+}
 .modal-user-info img {
-	width: 145px;
-	height: 145px;
+	width: 170px;
+	height: 170px;
 	border-radius: 100%;
-	
 	margin-top: 25px;
-	margin-left: 20px;
+	margin-left: -10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*p {
-
-}*/
+.modal-user-info ul :nth-child(2) {
+	/* Name */
+	color: #000;
+	font-weight: bold;
+	text-transform: capitalize;
+	margin-top: 0px;
+	margin-right: 30px;
+}
+.modal-user-info ul :nth-child(5) {
+	/* Line Through*/
+	line-height: 4.25em;
+}
+.modal-user-info ul :nth-child(7) {
+	/* Street Address*/
+	text-transform: capitalize;
+}
+.modal-user-info ul :nth-child(8) {
+	/* Birthday */
+	text-transform: capitalize;
+	Margin-bottom: 30px;
+}

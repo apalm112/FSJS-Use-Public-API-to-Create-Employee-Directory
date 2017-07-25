@@ -7,6 +7,71 @@
 // Object to hold the data.results Object returned from $.ajax call.
 // This keeps the data accessible for rest of the script.
 let cloud = {};
+// source: https://gist.github.com/mshafrir/2646763
+const sA =
+	{
+		'Alabama': 'AL',
+		'Alaska': 'AK',
+		'American Samoa': 'AS',
+		'Arizona': 'AZ',
+		'Arkansas': 'AR',
+		'California': 'CA',
+		'Colorado': 'CO',
+		'Connecticut': 'CT',
+		'Delaware': 'DE',
+		'District Of Columbia': 'DC',
+		'Federated States Of Micronesia': 'FM',
+		'Florida': 'FL',
+		'Georgia': 'GA',
+		'Guam': 'GU',
+		'Hawaii': 'HI',
+		'Idaho': 'ID',
+		'Illinois': 'IL',
+		'Indiana': 'IN',
+		'Iowa': 'IA',
+		'Kansas': 'KS',
+		'Kentucky': 'KY',
+		'Louisiana': 'LA',
+		'Maine': 'ME',
+		'Marshall Islands': 'MH',
+		'Maryland': 'MD',
+		'Massachusetts': 'MA',
+		'Michigan': 'MI',
+		'Minnesota': 'MN',
+		'Mississippi': 'MS',
+		'Missouri': 'MO',
+		'Montana': 'MT',
+		'Nebraska': 'NE',
+		'Nevada': 'NV',
+		'New Hampshire': 'NH',
+		'New Jersey': 'NJ',
+		'New Mexico': 'NM',
+		'New York': 'NY',
+		'North Carolina': 'NC',
+		'North Dakota': 'ND',
+		'Northern Mariana Islands': 'MP',
+		'Ohio': 'OH',
+		'Oklahoma': 'OK',
+		'Oregon': 'OR',
+		'Palau': 'PW',
+		'Pennsylvania': 'PA',
+		'Puerto Rico': 'PR',
+		'Rhode Island': 'RI',
+		'South Carolina': 'SC',
+		'South Dakota': 'SD',
+		'Tennessee': 'TN',
+		'Texas': 'TX',
+		'Utah': 'UT',
+		'Vermont': 'VT',
+		'Virgin Islands': 'VI',
+		'Virginia': 'VA',
+		'Washington': 'WA',
+		'West Virginia': 'WV',
+		'Wisconsin': 'WI',
+		'Wyoming': 'WY'
+	};
+let doggo = '';
+let answer = '';
 
 	function displayRandomUser(data) {
 		let randoHTML = '';
@@ -49,8 +114,6 @@ let cloud = {};
 		success: function(data) {
 			Object.assign(cloud, data);
 			console.log(cloud);
-			console.log(data.results[0].picture.medium);
-			console.log(cloud.results[0].picture.medium);
 			displayRandomUser(data);
 			displayModal(cloud);
 			hideModal();
@@ -89,12 +152,19 @@ let cloud = {};
 		modalHTML += '<li>' + cloud.results[targetElement].name.first + ' ' +  cloud.results[targetElement].name.last + '</li>';
 		modalHTML += '<li>' + cloud.results[targetElement].login.username + '</li>';
 		modalHTML += '<li>' + cloud.results[targetElement].email + '</li>';
-		modalHTML += '<li>-------------------------------------------------------</li>';
-		modalHTML += '<li>' + cloud.results[targetElement].cell + '</li>';
+		modalHTML += '<li class="line">---------------------------------------------------------</li>';
 
-		modalHTML += '<li>' + cloud.results[targetElement].location.street + '</li>';
-		modalHTML += '<li>' + cloud.results[targetElement].location.city + ', ' + cloud.results[targetElement].location.state + ' ' + cloud.results[targetElement].location.postcode + '</li>';
-		modalHTML += '<li>Birthday: ' + cloud.results[targetElement].dob + '</li>';
+		let cellNum = cloud.results[targetElement].cell;
+		modalHTML += '<li>' + formatCell(cellNum) + '</li>';
+
+		let stateToFormat = cloud.results[targetElement].location.state;
+
+		modalHTML += '<li>' + cloud.results[targetElement].location.street + ' ' + cloud.results[targetElement].location.city + ', ' + formatState(stateToFormat) + ' ' + cloud.results[targetElement].location.postcode + '</li>';
+
+		let dobToFormat = cloud.results[targetElement].dob;
+		modalHTML += '<li>Birthday: ' + formatDob(dobToFormat) + '</li>';
+
+
 		modalHTML += '</ul>';
 
 		$('.modal-user-info').html(modalHTML);
@@ -105,23 +175,68 @@ let cloud = {};
 		$('.modal-user-info').remove();
 	}
 
+	function formatCell(cellNum) {
+		// http://regexr.com/
+		const cellRegex = /\)-?/g;
+		let properCellFormat = cellNum.replace(cellRegex, ') ');
+		return properCellFormat;
+	}
 
+	function formatDob(dobToFormat) {
+		// https://regex101.com/
+		const dobRegex = /\/"\d{4}-\d{2}-\d{2}\g/;
+		// const dobRegex = /\"\d{4}-\d{2}-\d{2}/;
+		let properDob = dobToFormat.replace(dobRegex);
+		let properDob1 = properDob.split('-', 3);
+		let month = properDob1[1];
+		let day = properDob1[2].slice([0], [2]);
+		let year = properDob1[0].slice([2], [4]);
+		let properDob2 = month + '/' + day + '/' + year;
+		return properDob2;
+	}
 
-
-	/* *********************************************************/
-	//	TODO:  create a new function which will format the user info data for proper display in the modal.  DOB: 09/22/76   State: change Arkansas to AR
-		//  And the rest of teh CSS for
-		function formatModalData() {
+	function formatState(stateToFormat) {
+		let capState = stateToFormat.charAt(0).toUpperCase() + stateToFormat.slice([1]);
+		if (!capState.includes(' ') ) {
+			for (let key in sA) {
+				if (key === capState) {
+					doggo = Object.keys(sA);
+					answer = Object.values(sA);
+				}
+			}	// end for loop
+			let findState = doggo.indexOf(capState);
+			let space = answer[findState];
+			return space;
+		} else {
+			let doubleName = stateToFormat.charAt(0).toUpperCase() + stateToFormat.slice([1]);
+			// Gets index of the first space in the state name.
+			let num = doubleName.indexOf(' ');
+			// Change second word to capitalized
+			doubleName = doubleName.slice([0], [num+1]) + doubleName.charAt(num+1).toUpperCase() + doubleName.slice([num+2]);
+			console.log(doubleName); // Logs: 'South Dakota'
+			for (let key in sA) {
+				if (key === doubleName) {
+					doggo = Object.keys(sA);
+					console.log(doggo);
+					answer = Object.values(sA);
+					console.log(answer);
+				}
+			}
+			let findState = doggo.indexOf(doubleName);	// idx of match in answer
+			console.log(findState);
+			let space2 = answer[findState];	// correct state abbreviation
+			console.log(space2);
+			return space2;
 
 		}
+	}	// end of formatState();
 
-
-
-	/****************************************************************************/
 
 })(window);
 
-	/*	Project Instructions:
+/* *********************************************************
+
+			Project Instructions:
 				Structure and style the user directory so that it roughly matches the provide mockup.
 				Display the users in a grid or table
 ------->Add a hover state to the rows of the user table.	<--------------
@@ -135,4 +250,4 @@ let cloud = {};
 				TODO:	Functionality has been added to switch back and forth between employees when the detail modal window is open.
 
 				Add a way to move back and forth between employee detail windows when the modal window is open.
-	*/
+				****************************************************************************/
