@@ -196,7 +196,6 @@ let answer = '';
 	}
 
 	function formatState(stateToFormat) {
-	// TODO: capState format does NOT catch a state name more than One word length.  The next words are NOT capitalizeds, no key match is ever found in the for loop.
 		let capState = stateToFormat.charAt(0).toUpperCase() + stateToFormat.slice([1]);
 		if (!capState.includes(' ') ) {
 			for (let key in sA) {
@@ -231,14 +230,13 @@ let answer = '';
 
 		}
 	}	// end of formatState();
-	/* *********************************************************/
-
-		/****************************************************************************/
 
 
 })(window);
 
-	/*	Project Instructions:
+/* *********************************************************
+
+			Project Instructions:
 				Structure and style the user directory so that it roughly matches the provide mockup.
 				Display the users in a grid or table
 ------->Add a hover state to the rows of the user table.	<--------------
@@ -252,4 +250,4 @@ let answer = '';
 				TODO:	Functionality has been added to switch back and forth between employees when the detail modal window is open.
 
 				Add a way to move back and forth between employee detail windows when the modal window is open.
-	*/
+				****************************************************************************/

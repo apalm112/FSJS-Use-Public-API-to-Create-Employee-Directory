@@ -1,21 +1,26 @@
 /*  Base Styles -------------------------------------------------- */
 * {
 	box-sizing: border-box;
-	/*max-width: 100%;*/
-	/*border: 1px black solid;*/
+	max-width: 100%;
 }
 body {
-	/*max-width: 100%;*/
 	margin: 0 auto;
 	background: #fffcf7;
 }
 h1 {
 	font-size: 30px;
-	margin-left: 200px;
+	margin-left: 130px;
+	margin-top: 70px;
+	color: grey;
+}
+li {
+	color: grey;
 }
 /* Container Styles -------------------------------------------------- */
+/*.wrapper {
+	max-width: 100%;
+}*/
 .article ul {
-	background-color: aliceblue;
 	list-style: none;
 	width: 530px;
 	height: 200px;
@@ -25,36 +30,34 @@ h1 {
 	border: 3px solid #DEE2E3;
 	border-radius: 12px;
 }
-
 .article li {
 	display: inline-block;
-	line-height: 1em;
-	float: left;
 	width: 231px;
+	line-height: 1.7em;
+	text-align: left;
+	margin-left: 30px;
+	text-transform: capitalize;
 }
-
 .article img {
 	width: 145px;
 	height: 145px;
 	border-radius: 100%;
 	float: left;
 	margin-top: 25px;
-	margin-left: 20px;
+	margin-left: -10px;
 }
-
 ul :nth-child(2) {
 	/* Name */
-	margin-top: 75px;
+	margin-top: 40px;
 	margin-right: 30px;
+	text-emphasis: bold;
+	color: #000;
 }
 ul :nth-child(3) {
 	/* Email */
 	margin-right: 70px;
 }
-ul :nth-child(4) {
-	/* City */
-}
-/* 960 GRID */
+/* GRID Layout ----------------------------------------------------- */
 .grid_1, .grid_2, .grid_3 {
 	max-width: 30%;
 	float: left;
@@ -147,42 +150,3 @@ ul :nth-child(4) {
 	text-transform: capitalize;
 	Margin-bottom: 30px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*p {
-
-}*/
