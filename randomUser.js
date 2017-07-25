@@ -89,12 +89,18 @@ let cloud = {};
 		modalHTML += '<li>' + cloud.results[targetElement].name.first + ' ' +  cloud.results[targetElement].name.last + '</li>';
 		modalHTML += '<li>' + cloud.results[targetElement].login.username + '</li>';
 		modalHTML += '<li>' + cloud.results[targetElement].email + '</li>';
-		modalHTML += '<li>-------------------------------------------------------</li>';
-		modalHTML += '<li>' + cloud.results[targetElement].cell + '</li>';
+		modalHTML += '<li class="line">---------------------------------------------------------</li>';
+
+		let cellNum = cloud.results[targetElement].cell;
+		modalHTML += '<li>' + formatCell(cellNum) + '</li>';
 
 		modalHTML += '<li>' + cloud.results[targetElement].location.street + '</li>';
 		modalHTML += '<li>' + cloud.results[targetElement].location.city + ', ' + cloud.results[targetElement].location.state + ' ' + cloud.results[targetElement].location.postcode + '</li>';
-		modalHTML += '<li>Birthday: ' + cloud.results[targetElement].dob + '</li>';
+
+		let dobToFormat = cloud.results[targetElement].dob;
+		modalHTML += '<li>Birthday: ' + formatDob(dobToFormat) + '</li>';
+
+
 		modalHTML += '</ul>';
 
 		$('.modal-user-info').html(modalHTML);
@@ -110,12 +116,26 @@ let cloud = {};
 
 	/* *********************************************************/
 	//	TODO:  create a new function which will format the user info data for proper display in the modal.  DOB: 09/22/76   State: change Arkansas to AR
-		//  And the rest of teh CSS for
-		function formatModalData() {
-
+		function formatCell(cellNum) {
+			// http://regexr.com/
+			const cellRegex = /\)-?/g;
+			let properCellFormat = cellNum.replace(cellRegex, ') ');
+			return properCellFormat;
 		}
 
-
+		function formatDob(dobToFormat) {
+			const dobRegex = /\/"\d{4}-\d{2}-\d{2}\g/;
+			// const dobRegex = /\"\d{4}-\d{2}-\d{2}/;
+			let properDob = dobToFormat.replace(dobRegex);
+			console.log('Here is proberdob: ' + properDob);
+			let properDob1 = properDob.split('-', 3);
+			let month = properDob1[1];
+			let day = properDob1[2].slice([0], [2]);
+			let year = properDob1[0].slice([2], [4]);
+			let properDob2 = month + '/' + day + '/' + year;
+			console.log(properDob2);
+			return properDob2;
+		}
 
 	/****************************************************************************/
 

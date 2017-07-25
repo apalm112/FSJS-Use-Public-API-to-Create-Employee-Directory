@@ -111,16 +111,35 @@ ul :nth-child(4) {
 	text-align: center;
 	width: 420px;
 }
-
+.modal-user-info .line {
+	text-decoration: line-through;
+}
 .modal-user-info img {
-	width: 145px;
-	height: 145px;
+	width: 170px;
+	height: 170px;
 	border-radius: 100%;
-	
+
 	margin-top: 25px;
 	margin-left: 20px;
 }
-
+.modal-user-info ul :nth-child(2) {
+	/* Name */
+	font-weight: bold;
+	text-transform: capitalize;
+	margin-top: 75px;
+	margin-right: 30px;
+}
+.modal-user-info ul :nth-child(6) {
+	/* Phone # */
+}
+.modal-user-info ul :nth-child(7) {
+	/* Street Address*/
+	text-transform: capitalize;
+}
+.modal-user-info ul :nth-child(8) {
+	/* City */
+	text-transform: capitalize;
+}
 
 
 
