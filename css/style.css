@@ -1,7 +1,6 @@
 /*  Base Styles -------------------------------------------------- */
 * {
 	box-sizing: border-box;
-	max-width: 100%;
 }
 body {
 	margin: 0 auto;
@@ -12,6 +11,9 @@ h1 {
 	margin-left: 130px;
 	margin-top: 70px;
 	color: #636161;
+}
+img {
+	max-width: 100%;
 }
 li {
 	color: grey;
