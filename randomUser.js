@@ -156,8 +156,6 @@ let cloud = {};
 		});
 	}
 
-
-
 	function clickLeftHover(cloud) {
 		// On click display respective employee info in modal.
 		$left.click(function() {
@@ -174,14 +172,10 @@ let cloud = {};
 			// set data attribute to new index of employee object the cloud so next arrow click will produce the correct employee info.
 			$duh.attr('data', tes1);
 
-
-
-			clearModal();
+			emptyUserModal();
 			buildUserModal(cloud, tes1); // NEED NEW FUNCTION?
 		});	//	end click()
 	}	// end clickLeftHover()
-
-
 
 	function clickRightHover(cloud) {
 		// On click display respective employee info in modal.
@@ -196,20 +190,11 @@ let cloud = {};
 			test1 += 1;
 			$duh.attr('data', test1);
 
-
 			console.log($rightIdx);
-			clearModal();
+			emptyUserModal();
 			buildUserModal(cloud, test1); // NEED NEW FUNCTION?
 		});	//	end click()
 	}	// end clickLeftHover()
-
-	function clearModal() {
-		// Function to clear current employee info from the modal after an icon arrow is clicked, this allows the modal to be filled w/ the next employee info.
-		let $getEmp = $('.modal-user-info');
-		$getEmp.empty();
-
-
-	}
 	/****************************************************************************/
 
 	$(document).ready(function() {
@@ -222,8 +207,6 @@ let cloud = {};
 				console.log(cloud);
 				displayRandomUser(data);
 				displayModal(cloud);
-				// hideModal();
-				// hoverState();
 			}
 		});	// end .ajax()
 
