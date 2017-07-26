@@ -8,7 +8,7 @@ body {
 }
 h1 {
 	font-size: 30px;
-	margin-left: 130px;
+	margin-left: 225px;
 	margin-top: 70px;
 	color: #636161;
 }
@@ -21,6 +21,12 @@ li {
 img {
 	 /* For images, so they never exceed their container's width */
 	max-width: 100%;
+}
+/* Search Styles-***********************************/
+[class*='blackhole'] {
+	display: inline-block;
+	position: relative;
+	left: 230px;
 }
 /* Container Styles -------------------------------------------------- */
 .article ul {
@@ -78,7 +84,7 @@ ul :nth-child(3) {
 }
 [class*='grid_2'] {
 	/* These rules fix the hover/click bug of not working on the entire container of .rando in grid_1 */
-	margin-left: 0px;
+	margin-left: 0%;
 	width: 0%;
 	margin-right: 525px;
 }[class*='grid_3'] {
@@ -192,3 +198,13 @@ ul :nth-child(3) {
 	line-height: 1.25em;
 	font-size: 2em;
 }
+/* MEDIA QUERIES **************************************************/
+
+@@media min-width {
+
+}
+@media only screen and (max-width: 877px){
+
+  .grid_1 {
+   /*width: 0%;*/
+  }

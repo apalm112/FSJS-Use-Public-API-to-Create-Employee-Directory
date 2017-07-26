@@ -62,7 +62,7 @@ let cloud = {};
 			emptyUserModal();
 			$('.modal').fadeOut(200);
 			$('.user-modal').toggleClass('out in');
-		})
+		});
 	}	// end hideModal()
 
 	function buildUserModal(cloud, targetElement) {
@@ -208,12 +208,35 @@ let cloud = {};
 	}	// end clickLeftHover()
 	/* ********************************************************/
 	/* Project Instructions:
-	TODO:  Fix bug in grid_1 which effects the hover/click area of .rando, is less than width of the box.
-	PUSH GOALS:
 	TODO: Employees can be filtered by name or username
 	Add a way to filter the directory by name or username.
 	https://osvaldas.info/real-time-search-in-javascript
 	To do this, you’ll need to request a random user nationality that will only return data in the English alphabet. Note: you don't have to rely on the API to return search results. You'll need to write functionality that filters results once they already on the page.  */
+
+	function appendSearchDiv() {
+		// Dynamically create & append search div & input.
+		let searchIn = document.createElement('input');
+		const $h1 = $('h1');
+		searchIn.type = 'text';
+		searchIn.setAttribute('class', 'blackhole');
+		searchIn.placeholder = 'Type to search for user';
+		$h1.after(searchIn);
+	}
+
+	function filterUser() {
+		// Filter through current employees on page for any matches from the input box.
+		// source: https://stackoverflow.com/questions/9127498/how-to-perform-a-real-time-search-and-filter-on-a-html-table
+		let $serch = $('input');
+		$serch.keyup(function() {
+			// Gets User input text, turns it to lower case to find any matches already displayed in the DOM in the ul's w/ class="rando"
+			let val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+			$('.rando').show().filter(function() {
+				let text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+				return !~text.indexOf(val)
+			}).hide();
+		});
+	}
+
 
 	/****************************************************************************/
 	$(document).ready(function() {
@@ -227,11 +250,13 @@ let cloud = {};
 				displayRandomUser(data);
 				displayModal(cloud);
 				hoverState();
+				appendSearchDiv();
+				filterUser();
 			}
 		});	// end .ajax()
 
 		hideModal();
-		circleLeftHover()
+		circleLeftHover();
 		circleRightHover();
 		clickLeftHover(cloud);
 		clickRightHover(cloud);
