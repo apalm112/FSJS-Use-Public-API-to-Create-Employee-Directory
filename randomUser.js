@@ -43,26 +43,13 @@ let cloud = {};
 		$('.grid_3').html(randoHTML3);
 	}	// end displayRandomUser()
 
-	$.ajax({
-		// url: 'https://randomuser.me/api/?results=12&nat=us',
-		url: 'https://randomuser.me/api/?results=12',
-		dataType: 'json',
-		success: function(data) {
-			Object.assign(cloud, data);
-			console.log(cloud);
-			displayRandomUser(data);
-			displayModal(cloud);
-			hideModal();
-			hoverState();
-		}
-	});	// end .ajax()
-
 	function displayModal(cloud) {
 		// Functino to Get & Display data for the modal on user click.
-
 		// Click on any ul elem triggers function to display THAT ul's user info.
 		$('.rando').click(function() {
 			var targetElement = $('.rando').index(this);
+			console.log(targetElement);
+			// targetElement gets the index of the employee clicked on
 			buildUserModal(cloud, targetElement);
 			$('.modal').fadeIn(200);
 			$('.user-modal').toggleClass('out in');
@@ -81,13 +68,16 @@ let cloud = {};
 	function buildUserModal(cloud, targetElement) {
 		// Function to build the DOM elems to hold the user info
 		// Creates a div to display the user info & appends to DOM
-		let userInfoDiv = '<div class="modal-user-info"></div>';
+		// data attribute passes along the employee index for later use by modal icon click function.
+		let userInfoDiv = '<div class="modal-user-info" data="' + targetElement + '"></div>';
 		$('.user-modal').append(userInfoDiv);
 		let modalHTML = '';
 		modalHTML += '<ul>';
 		modalHTML += '<li><img src=' + cloud.results[targetElement].picture.medium + '></li>';
 		modalHTML += '<li>' + cloud.results[targetElement].name.first + ' ' +  cloud.results[targetElement].name.last + '</li>';
+		// modalHTML += '<span class="icon-circle-left"></span>';
 		modalHTML += '<li>' + cloud.results[targetElement].login.username + '</li>';
+		// modalHTML += '<span class="icon-circle-right"></span>';
 		modalHTML += '<li>' + cloud.results[targetElement].email + '</li>';
 		modalHTML += '<li class="line">---------------------------------------------------------</li>';
 
@@ -139,22 +129,106 @@ let cloud = {};
 		);
 	}
 
+
+
+	/* ********************************************************/
+	let $left = $('.icon-circle-left');
+	let $right = $('.icon-circle-right');
+	// let $rightIdx = $duh[0].getAttribute('data');
+
+	function circleLeftHover() {
+		$left.hover(function() {
+			$(this).css({'color': '#140823'});
+			$(this).css({'background': 'rgba(7,7,7,0.7)'});
+			$(this).css({'border-radius': '20px'});
+		}, function() {
+				$(this).css({'color': '#636161'});
+				$(this).css({'background': '#fffcf7'});
+				$(this).css({'border-radius': ''});
+		});
+	}
+	function circleRightHover() {
+		// add a hover & click functions to control icomoons
+		$right.hover(function() {
+			$(this).css({'color': '#140823'});
+			$(this).css({'background': 'rgba(7,7,7,0.7)'});
+			$(this).css({'border-radius': '20px'});
+		}, function() {
+				$(this).css({'color': '#636161'});
+				$(this).css({'background': '#fffcf7'});
+				$(this).css({'border-radius': '20'});
+		});
+	}
+
+	function clickLeftHover(cloud) {
+		// On click display respective employee info in modal.
+		$left.click(function() {
+			// Click on any ul elem triggers function to display THAT ul's user info.
+			// get the data attribute of the modal-user-info
+			let $duh = $('.modal-user-info');
+			let $leftIdx = $duh[0].getAttribute('data');
+			// new stuff
+			// mutate obj into string
+			let tes = $leftIdx.valueOf();
+			// mutate string into integer
+			let tes1 = parseInt(tes);
+			tes1 -= 1;
+			// set data attribute to new index of employee object the cloud so next arrow click will produce the correct employee info.
+			$duh.attr('data', tes1);
+
+			emptyUserModal();
+			buildUserModal(cloud, tes1); // NEED NEW FUNCTION?
+		});	//	end click()
+	}	// end clickLeftHover()
+
+	function clickRightHover(cloud) {
+		// On click display respective employee info in modal.
+		$right.click(function() {
+			// Click on any ul elem triggers function to display THAT ul's user info.
+			// get the data attribute of the modal-user-info
+			let $duh = $('.modal-user-info');
+			let $rightIdx = $duh[0].getAttribute('data');
+			// set data attribute to new idx value, so +1
+			let test = $rightIdx.valueOf();
+			let test1 = parseInt(test);
+			test1 += 1;
+			$duh.attr('data', test1);
+
+			console.log($rightIdx);
+			emptyUserModal();
+			buildUserModal(cloud, test1); // NEED NEW FUNCTION?
+		});	//	end click()
+	}	// end clickLeftHover()
+	/****************************************************************************/
+
+	$(document).ready(function() {
+		$.ajax({
+			// url: 'https://randomuser.me/api/?results=12&nat=us',
+			url: 'https://randomuser.me/api/?results=12',
+			dataType: 'json',
+			success: function(data) {
+				Object.assign(cloud, data);
+				console.log(cloud);
+				displayRandomUser(data);
+				displayModal(cloud);
+				hoverState();
+			}
+		});	// end .ajax()
+
+		hideModal();
+		circleLeftHover()
+		circleRightHover();
+		clickLeftHover(cloud);
+		clickRightHover(cloud);
+	});
+
+
 })(window);
 
-/* *********************************************************
 
-			Project Instructions:
-				Structure and style the user directory so that it roughly matches the provide mockup.
-				Display the users in a grid or table
-------->Add a hover state to the rows of the user table.	<--------------
-
+			/* Project Instructions:
 				PUSH GOALS:
 				TODO: Employees can be filtered by name or username
 				Add a way to filter the directory by name or username.
 
-				To do this, you’ll need to request a random user nationality that will only return data in the English alphabet. Note: you don't have to rely on the API to return search results. You'll need to write functionality that filters results once they already on the page.
-
-				TODO:	Functionality has been added to switch back and forth between employees when the detail modal window is open.
-
-				Add a way to move back and forth between employee detail windows when the modal window is open.
-				****************************************************************************/
+				To do this, you’ll need to request a random user nationality that will only return data in the English alphabet. Note: you don't have to rely on the API to return search results. You'll need to write functionality that filters results once they already on the page.  */
