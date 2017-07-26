@@ -131,7 +131,6 @@ let cloud = {};
 
 
 
-	/* ********************************************************/
 	let $left = $('.icon-circle-left');
 	let $right = $('.icon-circle-right');
 	// let $rightIdx = $duh[0].getAttribute('data');
@@ -207,8 +206,16 @@ let cloud = {};
 			}
 		});	//	end click()
 	}	// end clickLeftHover()
-	/****************************************************************************/
+	/* ********************************************************/
+	/* Project Instructions:
+	TODO:  Fix bug in grid_1 which effects the hover/click area of .rando, is less than width of the box.
+	PUSH GOALS:
+	TODO: Employees can be filtered by name or username
+	Add a way to filter the directory by name or username.
+	https://osvaldas.info/real-time-search-in-javascript
+	To do this, you’ll need to request a random user nationality that will only return data in the English alphabet. Note: you don't have to rely on the API to return search results. You'll need to write functionality that filters results once they already on the page.  */
 
+	/****************************************************************************/
 	$(document).ready(function() {
 		$.ajax({
 			// url: 'https://randomuser.me/api/?results=12&nat=us',
@@ -232,11 +239,3 @@ let cloud = {};
 
 
 })(window);
-
-
-			/* Project Instructions:
-				PUSH GOALS:
-				TODO: Employees can be filtered by name or username
-				Add a way to filter the directory by name or username.
-
-				To do this, you’ll need to request a random user nationality that will only return data in the English alphabet. Note: you don't have to rely on the API to return search results. You'll need to write functionality that filters results once they already on the page.  */

@@ -23,9 +23,6 @@ img {
 	max-width: 100%;
 }
 /* Container Styles -------------------------------------------------- */
-/*.wrapper {
-	max-width: 100%;
-}*/
 .article ul {
 	list-style: none;
 	width: 480px;
@@ -67,17 +64,30 @@ ul :nth-child(3) {
 	margin-right: 35px;
 }
 /* GRID Layout ----------------------------------------------------- */
-.grid_1, .grid_2, .grid_3 {
+*, *:after, *:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+[class*='grid_'] {
 	max-width: 27.5%;
 	float: left;
-	margin: 10px 0;
+}
+[class*='grid_1'] {
+	margin-left: 100px;
+}
+[class*='grid_2'] {
+	/* These rules fix the hover/click bug of not working on the entire container of .rando in grid_1 */
+	margin-left: 0px;
+	width: 0%;
+	margin-right: 525px;
+}[class*='grid_3'] {
+	/* width: 0px fixes the hover/click bug of not working on the entire container of .rando in grid_2 */
+	width: 0px;
 }
 .container {
 	overflow: auto;
 	height: 100%;
-}
-.name {
-	font-weight: bold;
 }
 /* Modal Styles -------------------------------------------------- */
 .modal {
