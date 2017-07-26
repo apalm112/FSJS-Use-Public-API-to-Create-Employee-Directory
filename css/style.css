@@ -18,6 +18,10 @@ img {
 li {
 	color: grey;
 }
+img {
+	 /* For images, so they never exceed their container's width */
+	max-width: 100%;
+}
 /* Container Styles -------------------------------------------------- */
 /*.wrapper {
 	max-width: 100%;
@@ -98,9 +102,8 @@ ul :nth-child(3) {
 	right: 10px;
 	font-size: 1em;
 	cursor: pointer;
-	margin-right: 40px;
+	margin-right: 20px;
 	margin-top: 5px
-
 }
 .out {
 	top: -30%;
@@ -142,16 +145,40 @@ ul :nth-child(3) {
 	margin-top: 0px;
 	margin-right: 30px;
 }
+.modal-user-info ul :nth-child(3),
+	/* USER NAME */
+	.modal-user-info ul :nth-child(4),
+	 /* EMAIL */
+	.modal-user-info ul :nth-child(5) {
+			/* LINE*/
+			display: inline-block;
+		}
+.modal-user-info ul :nth-child(3) {
+	/* USER NAME */
+}
+.modal-user-info ul :nth-child(4) {
+	/* EMAIL */
+}
 .modal-user-info ul :nth-child(5) {
-	/* Line Through*/
+	/* LINE */
 	line-height: 4.25em;
 }
 .modal-user-info ul :nth-child(7) {
-	/* Street Address*/
+	/* ADDRESS */
 	text-transform: capitalize;
 }
 .modal-user-info ul :nth-child(8) {
 	/* Birthday */
-	text-transform: capitalize;
-	Margin-bottom: 30px;
+}
+/* Modal Switch Layout ------------------------------------------ */
+.icon-circle-left {
+	content: "\ea44";
+	line-height: 1.25em;
+	font-size: 2em;
+	top:180px;
+}
+.icon-circle-right {
+  content: "\ea42";
+	line-height: 1.25em;
+	font-size: 2em;
 }
