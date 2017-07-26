@@ -45,10 +45,11 @@ let cloud = {};
 
 	function displayModal(cloud) {
 		// Functino to Get & Display data for the modal on user click.
-
 		// Click on any ul elem triggers function to display THAT ul's user info.
 		$('.rando').click(function() {
 			var targetElement = $('.rando').index(this);
+			console.log(targetElement);
+			// targetElement gets the index of the employee clicked on
 			buildUserModal(cloud, targetElement);
 			$('.modal').fadeIn(200);
 			$('.user-modal').toggleClass('out in');
@@ -67,7 +68,8 @@ let cloud = {};
 	function buildUserModal(cloud, targetElement) {
 		// Function to build the DOM elems to hold the user info
 		// Creates a div to display the user info & appends to DOM
-		let userInfoDiv = '<div class="modal-user-info"></div>';
+		// data attribute passes along the employee index for later use by modal icon click function.
+		let userInfoDiv = '<div class="modal-user-info" data="' + targetElement + '"></div>';
 		$('.user-modal').append(userInfoDiv);
 		let modalHTML = '';
 		modalHTML += '<ul>';
@@ -128,8 +130,11 @@ let cloud = {};
 	}
 
 	/* ********************************************************/
+	let $left = $('.icon-circle-left');
+	let $right = $('.icon-circle-right');
+	// let $rightIdx = $duh[0].getAttribute('data');
+
 	function circleLeftHover() {
-		let $left = $('.icon-circle-left');
 		$left.hover(function() {
 			$(this).css({'color': '#140823'});
 			$(this).css({'background': 'rgba(7,7,7,0.7)'});
@@ -140,8 +145,7 @@ let cloud = {};
 	}
 	function circleRightHover() {
 		// add a hover & click functions to control icomoons
-		let $ah = $('.icon-circle-right');
-		$ah.hover(function() {
+		$right.hover(function() {
 			$(this).css({'color': '#140823'});
 			$(this).css({'background': 'rgba(7,7,7,0.7)'});
 		}, function() {
@@ -149,6 +153,45 @@ let cloud = {};
 				$(this).css({'background': '#fffcf7'});
 		});
 	}
+	function clickLeftHover(cloud) {
+		// On click display respective employee info in modal.
+		$left.click(function() {
+			// Click on any ul elem triggers function to display THAT ul's user info.
+			// get the data attribute of the modal-user-info	let $duh = $('.modal-user-info');
+			let $duh = $('.modal-user-info');
+			let $leftIdx = $duh[0].getAttribute('data');
+
+			$leftIdx -= 1;
+			console.log($leftIdx);
+			console.log(cloud);
+			// clearModal();
+			buildUserModal(cloud, $leftIdx); // NEED NEW FUNCTION?
+		});	//	end click()
+	}	// end clickLeftHover()
+
+	function clickRightHover(cloud) {
+		// On click display respective employee info in modal.
+		$right.click(function() {
+			// Click on any ul elem triggers function to display THAT ul's user info.
+			// get the data attribute of the modal-user-info
+			let $duh = $('.modal-user-info');
+			let $rightIdx = $duh[0].getAttribute('data');
+
+			console.log($rightIdx);
+			console.log(cloud);
+			// clearModal();
+			buildUserModal(cloud, $rightIdx); // NEED NEW FUNCTION?
+		});	//	end click()
+	}	// end clickLeftHover()
+
+	function clearModal() {
+		// Function to clear current employee info from the modal after an icon arrow is clicked, this allows the modal to be filled w/ the next employee info.
+		let $getEmp = $('.modal-user-info');
+
+
+
+	}
+
 
 	/****************************************************************************/
 
@@ -166,11 +209,13 @@ let cloud = {};
 				// hoverState();
 			}
 		});	// end .ajax()
+
 		hideModal();
 		hoverState();
 		circleLeftHover()
 		circleRightHover();
-
+		clickLeftHover(cloud);
+		clickRightHover(cloud);
 	});
 
 

@@ -178,13 +178,14 @@ ul :nth-child(3) {
 	Margin-bottom: 30px;
 }
 /* Modal Switch Layout ------------------------------------------ */
-.icon-circle-left:before .color-hover {
-	/*content: "\ea44";*/
-	background: rgba(0,0,0,0.7);
-
+.icon-circle-left {
+	content: "\ea44";
+	line-height: 1.25em;
+	font-size: 2em;
+	top:180px;
 }
-.icon-circle-right:before .color-hover{
-  /*content: "\ea42";*/
-	background: rgba(0,0,0,0.7);
-
+.icon-circle-right {
+  content: "\ea42";
+	line-height: 1.25em;
+	font-size: 2em;
 }
