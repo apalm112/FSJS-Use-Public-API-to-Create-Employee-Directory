@@ -129,6 +129,8 @@ let cloud = {};
 		);
 	}
 
+
+
 	/* ********************************************************/
 	let $left = $('.icon-circle-left');
 	let $right = $('.icon-circle-right');
@@ -153,21 +155,33 @@ let cloud = {};
 				$(this).css({'background': '#fffcf7'});
 		});
 	}
+
+
+
 	function clickLeftHover(cloud) {
 		// On click display respective employee info in modal.
 		$left.click(function() {
 			// Click on any ul elem triggers function to display THAT ul's user info.
-			// get the data attribute of the modal-user-info	let $duh = $('.modal-user-info');
+			// get the data attribute of the modal-user-info
 			let $duh = $('.modal-user-info');
 			let $leftIdx = $duh[0].getAttribute('data');
+			// new stuff
+			// mutate obj into string
+			let tes = $leftIdx.valueOf();
+			// mutate string into integer
+			let tes1 = parseInt(tes);
+			tes1 -= 1;
+			// set data attribute to new index of employee object the cloud so next arrow click will produce the correct employee info.
+			$duh.attr('data', tes1);
 
-			$leftIdx -= 1;
-			console.log($leftIdx);
-			console.log(cloud);
-			// clearModal();
-			buildUserModal(cloud, $leftIdx); // NEED NEW FUNCTION?
+
+
+			clearModal();
+			buildUserModal(cloud, tes1); // NEED NEW FUNCTION?
 		});	//	end click()
 	}	// end clickLeftHover()
+
+
 
 	function clickRightHover(cloud) {
 		// On click display respective employee info in modal.
@@ -176,23 +190,26 @@ let cloud = {};
 			// get the data attribute of the modal-user-info
 			let $duh = $('.modal-user-info');
 			let $rightIdx = $duh[0].getAttribute('data');
+			// set data attribute to new idx value, so +1
+			let test = $rightIdx.valueOf();
+			let test1 = parseInt(test);
+			test1 += 1;
+			$duh.attr('data', test1);
+
 
 			console.log($rightIdx);
-			console.log(cloud);
-			// clearModal();
-			buildUserModal(cloud, $rightIdx); // NEED NEW FUNCTION?
+			clearModal();
+			buildUserModal(cloud, test1); // NEED NEW FUNCTION?
 		});	//	end click()
 	}	// end clickLeftHover()
 
 	function clearModal() {
 		// Function to clear current employee info from the modal after an icon arrow is clicked, this allows the modal to be filled w/ the next employee info.
 		let $getEmp = $('.modal-user-info');
-
+		$getEmp.empty();
 
 
 	}
-
-
 	/****************************************************************************/
 
 	$(document).ready(function() {
