@@ -140,9 +140,11 @@ let cloud = {};
 		$left.hover(function() {
 			$(this).css({'color': '#140823'});
 			$(this).css({'background': 'rgba(7,7,7,0.7)'});
+			$(this).css({'border-radius': '20px'});
 		}, function() {
 				$(this).css({'color': '#636161'});
 				$(this).css({'background': '#fffcf7'});
+				$(this).css({'border-radius': ''});
 		});
 	}
 	function circleRightHover() {
@@ -150,9 +152,11 @@ let cloud = {};
 		$right.hover(function() {
 			$(this).css({'color': '#140823'});
 			$(this).css({'background': 'rgba(7,7,7,0.7)'});
+			$(this).css({'border-radius': '20px'});
 		}, function() {
 				$(this).css({'color': '#636161'});
 				$(this).css({'background': '#fffcf7'});
+				$(this).css({'border-radius': '20'});
 		});
 	}
 
@@ -207,11 +211,11 @@ let cloud = {};
 				console.log(cloud);
 				displayRandomUser(data);
 				displayModal(cloud);
+				hoverState();
 			}
 		});	// end .ajax()
 
 		hideModal();
-		hoverState();
 		circleLeftHover()
 		circleRightHover();
 		clickLeftHover(cloud);
@@ -223,15 +227,8 @@ let cloud = {};
 
 
 			/* Project Instructions:
-				Structure and style the user directory so that it roughly matches the provide mockup.
-				Display the users in a grid or table
-------->Add a hover state to the rows of the user table.	<--------------
-
 				PUSH GOALS:
 				TODO: Employees can be filtered by name or username
 				Add a way to filter the directory by name or username.
 
-				To do this, you’ll need to request a random user nationality that will only return data in the English alphabet. Note: you don't have to rely on the API to return search results. You'll need to write functionality that filters results once they already on the page.
-
-
-				Add a way to move back and forth between employee detail windows when the modal window is open. */
+				To do this, you’ll need to request a random user nationality that will only return data in the English alphabet. Note: you don't have to rely on the API to return search results. You'll need to write functionality that filters results once they already on the page.  */

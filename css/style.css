@@ -143,39 +143,29 @@ ul :nth-child(3) {
 	margin-right: 30px;
 }
 .modal-user-info ul :nth-child(3),
-	/* Circle Left */
+	/* USER NAME */
 	.modal-user-info ul :nth-child(4),
-	 /* USER NAME */
+	 /* EMAIL */
 	.modal-user-info ul :nth-child(5) {
-			/* Circle Right */
-			display: inline;
+			/* LINE*/
+			display: inline-block;
 		}
 .modal-user-info ul :nth-child(3) {
-	/* CIRCLE LEFT */
-	color: #636161;
-	margin-left: -40px;
+	/* USER NAME */
 }
 .modal-user-info ul :nth-child(4) {
-	/* USER NAME */
-	margin-left: 95px;
-	margin-right: 145px;
+	/* EMAIL */
 }
 .modal-user-info ul :nth-child(5) {
-	/* CIRCLE RIGHT */
-	color: #636161;
-}
-.modal-user-info ul :nth-child(7) {
-	/* Line Through*/
+	/* LINE */
 	line-height: 4.25em;
 }
-.modal-user-info ul :nth-child(9) {
-	/* Street Address*/
+.modal-user-info ul :nth-child(7) {
+	/* ADDRESS */
 	text-transform: capitalize;
 }
-.modal-user-info ul :nth-child(10) {
+.modal-user-info ul :nth-child(8) {
 	/* Birthday */
-	text-transform: capitalize;
-	Margin-bottom: 30px;
 }
 /* Modal Switch Layout ------------------------------------------ */
 .icon-circle-left {
