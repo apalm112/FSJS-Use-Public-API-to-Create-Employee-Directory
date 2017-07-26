@@ -172,12 +172,16 @@ let cloud = {};
 			let tes = $leftIdx.valueOf();
 			// mutate string into integer
 			let tes1 = parseInt(tes);
-			tes1 -= 1;
 			// set data attribute to new index of employee object the cloud so next arrow click will produce the correct employee info.
 			$duh.attr('data', tes1);
-
-			emptyUserModal();
-			buildUserModal(cloud, tes1); // NEED NEW FUNCTION?
+			console.log($leftIdx);
+			if (tes1 >= 1) {
+				tes1 -= 1;
+				emptyUserModal();
+				buildUserModal(cloud, tes1); // NEED NEW FUNCTION?
+			} else {
+				tes1 = 0;
+			}
 		});	//	end click()
 	}	// end clickLeftHover()
 
@@ -191,12 +195,16 @@ let cloud = {};
 			// set data attribute to new idx value, so +1
 			let test = $rightIdx.valueOf();
 			let test1 = parseInt(test);
-			test1 += 1;
 			$duh.attr('data', test1);
 
 			console.log($rightIdx);
-			emptyUserModal();
-			buildUserModal(cloud, test1); // NEED NEW FUNCTION?
+			if (test1 <= 10) {
+				test1 += 1;
+				emptyUserModal();
+				buildUserModal(cloud, test1);
+			} else {
+				test1 = 11;
+			}
 		});	//	end click()
 	}	// end clickLeftHover()
 	/****************************************************************************/
