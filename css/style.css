@@ -23,7 +23,7 @@ img {
 	max-width: 100%;
 }
 /* Search Styles-***********************************/
-[class*='blackhole'] {
+[class*='employee-search'] {
 	display: inline-block;
 	position: relative;
 	left: 230px;
