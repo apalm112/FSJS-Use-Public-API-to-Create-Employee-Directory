@@ -132,7 +132,7 @@
 			$(this).css({'border-radius': '20px'});
 		}, function() {
 				$(this).css({'color': '#636161'});
-				$(this).css({'background': '#fffcf7'});
+				$(this).css({'background': '#fafafa'});
 				$(this).css({'border-radius': ''});
 		});
 	}
@@ -144,7 +144,7 @@
 			$(this).css({'border-radius': '20px'});
 		}, function() {
 				$(this).css({'color': '#636161'});
-				$(this).css({'background': '#fffcf7'});
+				$(this).css({'background': '#fafafa'});
 				$(this).css({'border-radius': '20'});
 		});
 	}
