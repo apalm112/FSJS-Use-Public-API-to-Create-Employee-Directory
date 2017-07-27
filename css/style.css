@@ -4,7 +4,7 @@
 }
 body {
 	margin: 0 auto;
-	background: #fffcf7;
+	background: #fafafa;
 }
 h1 {
 	font-size: 30px;
@@ -108,7 +108,7 @@ ul :nth-child(3) {
 .user-modal {
 	position: fixed;
 	width: 27%;
-	background: #fff;
+	background: #fafafa;
 	padding: 20px;
 	border-radius: 11px;
 }
