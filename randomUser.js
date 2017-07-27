@@ -1,4 +1,4 @@
-/* eslint-disable */
+// eslint-disable -
 // 	Review the Random User Generator documentation. Grab the example they provide and console.log the data so you can see what information you’ll receive and start to think about how you’ll access the correct information and display it on the page.
 'use strict';
 
@@ -6,13 +6,13 @@
 
 // Object to hold the data.results Object returned from $.ajax call.
 // This keeps the data accessible for rest of the script.
-let cloud = {};
+	let cloud = {};
 
 	function displayRandomUser(data) {
 		let randoHTML = '';
 		let randoHTML2 = '';
 		let randoHTML3 = '';
-		$.each(data.results, function(idx, picture) {
+		$.each(data.results, function(idx) {
 			if ( idx <= 3 ) {
 				randoHTML += '<ul class="rando">';
 				randoHTML += '<img src=' + data.results[idx].picture.medium + '>';
@@ -48,7 +48,6 @@ let cloud = {};
 		// Click on any ul elem triggers function to display THAT ul's user info.
 		$('.rando').click(function() {
 			var targetElement = $('.rando').index(this);
-			console.log(targetElement);
 			// targetElement gets the index of the employee clicked on
 			buildUserModal(cloud, targetElement);
 			$('.modal').fadeIn(200);
@@ -56,7 +55,7 @@ let cloud = {};
 		});	// end $.click()
 	}	// end displayModal()
 
-	function hideModal(data) {
+	function hideModal() {
 		// Function hides the modal when the closing 'X' is clicked.
 		$('.close').click(function() {
 			emptyUserModal();
@@ -74,7 +73,7 @@ let cloud = {};
 		let modalHTML = '';
 		modalHTML += '<ul>';
 		modalHTML += '<li><img src=' + cloud.results[targetElement].picture.medium + '></li>';
-		modalHTML += '<li>' + cloud.results[targetElement].name.first + ' ' +  cloud.results[targetElement].name.last + '</li>';
+		modalHTML += '<li>' + cloud.results[targetElement].name.first + ' ' + cloud.results[targetElement].name.last + '</li>';
 		// modalHTML += '<span class="icon-circle-left"></span>';
 		modalHTML += '<li>' + cloud.results[targetElement].login.username + '</li>';
 		// modalHTML += '<span class="icon-circle-right"></span>';
@@ -124,7 +123,7 @@ let cloud = {};
 		$('.rando').hover(function() {
 			$(this).css('background', 'rgba(0,0,0,0.1)');
 		}, function() {
-			$(this).css('background', '#fffcf7');
+			$(this).css('background', '#fafafa');
 			}
 		);
 	}
@@ -171,7 +170,6 @@ let cloud = {};
 			let tes1 = parseInt(tes);
 			// set data attribute to new index of employee object the cloud so next arrow click will produce the correct employee info.
 			$duh.attr('data', tes1);
-			console.log($leftIdx);
 			if (tes1 >= 1) {
 				tes1 -= 1;
 				emptyUserModal();
@@ -194,7 +192,6 @@ let cloud = {};
 			let test1 = parseInt(test);
 			$duh.attr('data', test1);
 
-			console.log($rightIdx);
 			if (test1 <= 10) {
 				test1 += 1;
 				emptyUserModal();
@@ -227,6 +224,9 @@ let cloud = {};
 
 				let text = $(this).children(':nth-child(2)').text().replace(/\s+g/, ' ');
 
+				// text2 can be used to allow user to search by emplyee username
+				// let text2 = $(this).children(':nth-child(3)').text().replace(/\s+g/, ' ');
+
 				return !~text.indexOf(val);
 
 			}).hide();	//end name.filter()
@@ -241,7 +241,6 @@ let cloud = {};
 			dataType: 'json',
 			success: function(data) {
 				Object.assign(cloud, data);
-				console.log(cloud);
 				displayRandomUser(data);
 				displayModal(cloud);
 				hoverState();
