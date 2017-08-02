@@ -1,7 +1,8 @@
+/* eslint-disable */
 'use strict';
 
 /* Treehouse Project 5 */
-(function() {
+( () =>  {
 
 // Object to hold the data.results Object returned from $.ajax call.
 // This keeps the data accessible for rest of the script.
@@ -9,7 +10,7 @@
 	let $left = $('.icon-circle-left');
 	let $right = $('.icon-circle-right');
 
-	function displayRandomUser(data) {
+	const displayRandomUser = (data) => {
 		// Builds the ul's to display employee data recieved from randomuser.me in the DOM.
 		let randoHTML = '';
 		let randoHTML2 = '';
@@ -46,11 +47,11 @@
 		$('.grid_3').html(randoHTML3);
 	}
 
-	function displayModal(cloud) {
+	const displayModal = (cloud) => {
 		// Function to Get & Display data for the modal on user click.
 		// Click on any ul triggers function to display that ul's user info.
 		$('.rando').click(function() {
-			var targetElement = $('.rando').index(this);
+			let targetElement = $('.rando').index(this);
 			// targetElement gets the index of the employee clicked on
 			buildUserModal(cloud, targetElement);
 			$('.modal').fadeIn(200);
@@ -58,7 +59,7 @@
 		});
 	}
 
-	function hideModal() {
+	const hideModal = () => {
 		// When the closing 'X' is clicked, hide the modal.
 		$('.close').click(function() {
 			emptyUserModal();
@@ -67,7 +68,7 @@
 		});
 	}
 
-	function buildUserModal(cloud, targetElement) {
+	const buildUserModal = (cloud, targetElement) => {
 		// Creates a div & formats it to display more employee info & appends to the DOM.
 		// data attribute passes along the employee index for later use by modal icon click function.
 		let userInfoDiv = '<div class="modal-user-info" data="' + targetElement + '"></div>';
@@ -88,12 +89,12 @@
 		$('.modal-user-info').html(modalHTML);
 	}
 
-	function emptyUserModal() {
+	const emptyUserModal = () => {
 		// Function to remove modal of all employee info, this gets the modal ready for the next time it is loaded.
 		$('.modal-user-info').remove();
 	}
 
-	function formatCell(cellNum) {
+	const formatCell = (cellNum) => {
 		// Strips out the first '-' in the cell number.
 		// http://regexr.com/
 		const cellRegex = /\)-?/g;
@@ -101,7 +102,7 @@
 		return properCellFormat;
 	}
 
-	function formatDob(dobToFormat) {
+	const formatDob = (dobToFormat) => {
 		// Formats the Bday to match the mockup format.
 		// https://regex101.com/
 		const dobRegex = /\/"\d{4}-\d{2}-\d{2}\g/;
@@ -114,44 +115,16 @@
 		return properDob2;
 	}
 
-	function hoverState() {
+	const hoverState = (elemTarget) => {
 		// Add a visual cue to the current ul of employee info being hovered over.
-		$('.rando').hover(function() {
-			$(this).css('background', 'rgba(0,0,0,0.1)');
-		}, function() {
-			$(this).css('background', '#fafafa');
-			}
-		);
-	}
-
-	function circleLeftHover() {
-		// Control hover feature for the left arrow icon.
-		$left.hover(function() {
-			$(this).css({'color': '#140823'});
-			$(this).css({'background': 'rgba(7,7,7,0.7)'});
-			$(this).css({'border-radius': '20px'});
-		}, function() {
-				$(this).css({'color': '#636161'});
-				$(this).css({'background': '#fafafa'});
-				$(this).css({'border-radius': ''});
-		});
-	}
-	function circleRightHover() {
-		// Control hover feature for the righ arrow icon.
-		$right.hover(function() {
-			$(this).css({'color': '#140823'});
-			$(this).css({'background': 'rgba(7,7,7,0.7)'});
-			$(this).css({'border-radius': '20px'});
-		}, function() {
-				$(this).css({'color': '#636161'});
-				$(this).css({'background': '#fafafa'});
-				$(this).css({'border-radius': '20'});
+		$(elemTarget).hover(function() {
+			$(this).toggleClass('hover');
 		});
 	}
 
-	function clickLeftHover(cloud) {
+	function clickLeftHover(cloud, circle) {
 		// Controls the display of previous employee's info in the modal.
-		$left.click(function() {
+		circle.click(function() {
 			// Get the data attribute of the modal-user-info.
 			let $duh = $('.modal-user-info');
 			let $leftIdx = $duh[0].getAttribute('data');
@@ -159,39 +132,48 @@
 			let tes = $leftIdx.valueOf();
 			//Mutate string into integer
 			let tes1 = parseInt(tes);
+			console.log(tes);
 			// Set data attribute to new index of employee object in the cloud object so next arrow click will produce the correct employee info.
 			$duh.attr('data', tes1);
-			// When at employee index 0, left arrow click stops.
-			if (tes1 >= 1) {
-				tes1 -= 1;
+			if (tes1 < 11 && circle === $right) {
+				// When at employee index 11, righ arrow click stops.
+				tes1 += 1;
 				emptyUserModal();
 				buildUserModal(cloud, tes1);
-			} else {
-				tes1 = 0;
-			}
-		});
-	}
-
-	function clickRightHover(cloud) {
-		// Control the display of next employee's info in modal.
-		$right.click(function() {
-			// Get the data attribute of the modal-user-info
-			let $duh = $('.modal-user-info');
-			let $rightIdx = $duh[0].getAttribute('data');
-			// Set data attribute to new idx value, so +1
-			let test = $rightIdx.valueOf();
-			let test1 = parseInt(test);
-			$duh.attr('data', test1);
-			// When at employee index 11, righ arrow click stops.
-			if (test1 <= 10) {
-				test1 += 1;
+			} else if (tes1 > 11 && circle === $left) {
+				// When at employee index 0, left arrow click stops.
+				tes1 -= 1;
+				console.log(tes1);
 				emptyUserModal();
-				buildUserModal(cloud, test1);
-			} else {
-				test1 = 11;
+				buildUserModal(cloud, tes1);
 			}
 		});
 	}
+	// else {
+	// 	tes1 = 0;
+	// }  else {
+	// 	test1 = 11;
+	// }
+	// function clickRightHover(cloud) {
+	// 	// Control the display of next employee's info in modal.
+	// 	$right.click(function() {
+	// 		// Get the data attribute of the modal-user-info
+	// 		let $duh = $('.modal-user-info');
+	// 		let $rightIdx = $duh[0].getAttribute('data');
+	// 		// Set data attribute to new idx value, so +1
+	// 		let test = $rightIdx.valueOf();
+	// 		let test1 = parseInt(test);
+	// 		$duh.attr('data', test1);
+	// 		// When at employee index 11, righ arrow click stops.
+	// 		if (test1 <= 10) {
+	// 			test1 += 1;
+	// 			emptyUserModal();
+	// 			buildUserModal(cloud, test1);
+	// 		} else {
+	// 			test1 = 11;
+	// 		}
+	// 	});
+	// }
 
 	function appendSearchDiv() {
 		// Dynamically create & append search div & input feature so user can search the currently displayed employees.
@@ -213,6 +195,7 @@
 			$('.rando').show().filter(function(  ) {
 				// $(this) is the current ul in the DOM. The .children(':nth-child(2)') sets the text variable strictly to the name value of each employee.  This allows the search results to instantly show or hide all matching employees.  Took me awhile to figure this part out.
 				let text = $(this).children(':nth-child(2)').text().replace(/\s+g/, ' ');
+				/* USE STARTS-WITH INSTEAD OF INCLUDES TO SEARCH BY BOTH NAME/USERNAME */
 				// text2 can be used to allow user to search by employee username inplace of employee name.
 				// let text2 = $(this).children(':nth-child(3)').text().replace(/\s+g/, ' ');
 				// Returns a truthy/falsey value.  indexOf(val) returns the index of the match, the ~ inverts the index which makes it false & the ! turns it back to true, so if the name being searched for is in the DOM, its corresponding ul will stay displayed.  If not a match, it returns false & hides the corresponding employees ul.
@@ -230,15 +213,15 @@
 				Object.assign(cloud, data);
 				displayRandomUser(data);
 				displayModal(cloud);
-				hoverState();
+				hoverState('.rando');
 				appendSearchDiv();
 				filterUser();
 			}
 		});
 		hideModal();
-		circleLeftHover();
-		circleRightHover();
-		clickLeftHover(cloud);
-		clickRightHover(cloud);
+		hoverState($left);
+		hoverState($right);
+		clickLeftHover(cloud, $left);
+		clickLeftHover(cloud, $right);
 	});
 })(window);

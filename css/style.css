@@ -29,6 +29,11 @@ img {
 	left: 230px;
 }
 /* Container Styles -------------------------------------------------- */
+.article {
+	/* From Treehouse Responsive Layouts Course */
+	 display: flex;
+	 flex-direction: column;
+}
 .article ul {
 	list-style: none;
 	width: 480px;
@@ -78,6 +83,8 @@ ul :nth-child(3) {
 [class*='grid_'] {
 	max-width: 27.5%;
 	float: left;
+	flex-grow: 1;
+	justify-content: space-around;
 }
 [class*='grid_1'] {
 	margin-left: 100px;
@@ -96,6 +103,12 @@ ul :nth-child(3) {
 	height: 100%;
 }
 /* Modal Styles -------------------------------------------------- */
+
+.icon-circle-left,
+.icon-circle-right {
+	border-radius: 20px;
+}
+
 .modal {
 	position: fixed;
 	top: 0;
@@ -198,12 +211,18 @@ ul :nth-child(3) {
 	line-height: 1.25em;
 	font-size: 2em;
 }
+/* Toggle Class For Hover state */
+.hover {
+	background: rgba(0,0,0,0.1);
+}
+
+
 /* MEDIA QUERIES **************************************************/
 
 @@media min-width {
 
 }
-@media only screen and (max-width: 877px){
+@media only screen and (min-width: 680px){
 
   .grid_1 {
    /*width: 0%;*/
