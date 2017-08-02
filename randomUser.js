@@ -10,6 +10,23 @@
 	let $left = $('.icon-circle-left');
 	let $right = $('.icon-circle-right');
 
+	let ajax = () => {
+		$.ajax({
+			url: 'https://randomuser.me/api/?results=12',
+			dataType: 'json',
+			success:  (data) => {
+				// Sets up the data into a local copy so the info will still be available for the modal.
+				Object.assign(cloud, data);
+				displayRandomUser(data);
+				displayModal(cloud);
+				hoverState('.rando');
+				appendSearchDiv();
+				filterUser();
+			}
+		});
+	}
+
+
 	const displayRandomUser = (data) => {
 		// Builds the ul's to display employee data recieved from randomuser.me in the DOM.
 		let randoHTML = '';
@@ -122,9 +139,9 @@
 		});
 	}
 
-	function clickLeftHover(cloud, circle) {
+	const clickLeftHover = (cloud, circle) => {
 		// Controls the display of previous employee's info in the modal.
-		circle.click(function() {
+		circle.click( () => {
 			// Get the data attribute of the modal-user-info.
 			let $duh = $('.modal-user-info');
 			let $leftIdx = $duh[0].getAttribute('data');
@@ -175,7 +192,7 @@
 	// 	});
 	// }
 
-	function appendSearchDiv() {
+	const appendSearchDiv = ()=> {
 		// Dynamically create & append search div & input feature so user can search the currently displayed employees.
 		let searchIn = document.createElement('input');
 		const $h1 = $('h1');
@@ -185,7 +202,7 @@
 		$h1.after(searchIn);
 	}
 
-	function filterUser() {
+	const filterUser = () => {
 		// Filter through current employees on page for any matches from the input box.  Gets user input text, turns it to lower case to find any matches already displayed in the DOM elements 'li.name'.
 		let $search = $('input');
 		$search.keyup(function() {
@@ -203,21 +220,9 @@
 			}).hide();
 		});
 	}
-	$(document).ready(function() {
+	$(document).ready( () => {
 		// After the DOM is done loading, make the ajax call.
-		$.ajax({
-			url: 'https://randomuser.me/api/?results=12',
-			dataType: 'json',
-			success: function(data) {
-				// Sets up the data into a local copy so the info will still be available for the modal.
-				Object.assign(cloud, data);
-				displayRandomUser(data);
-				displayModal(cloud);
-				hoverState('.rando');
-				appendSearchDiv();
-				filterUser();
-			}
-		});
+		ajax();
 		hideModal();
 		hoverState($left);
 		hoverState($right);
