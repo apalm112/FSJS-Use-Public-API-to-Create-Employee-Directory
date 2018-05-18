@@ -17,6 +17,8 @@
 			success:  (data) => {
 				// Sets up the data into a local copy so the info will still be available for the modal.
 				Object.assign(cloud, data);
+				console.log(cloud);
+
 				displayRandomUser(data);
 				displayModal(cloud);
 				hoverState('.rando');
