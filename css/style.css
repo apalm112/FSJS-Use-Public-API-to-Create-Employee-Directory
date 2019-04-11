@@ -12,9 +12,6 @@ h1 {
 	margin-top: 70px;
 	color: #636161;
 }
-img {
-	max-width: 100%;
-}
 li {
 	color: grey;
 }
@@ -29,32 +26,50 @@ img {
 	left: 230px;
 }
 /* Container Styles -------------------------------------------------- */
-.article ul {
+[class*="col-"] {
+  /* float: left; */
+  /* padding: 15px; */
+	display: flex;
+	flex-direction: column;
+}
+
+.col-3 {
+	/* From Treehouse Responsive Layouts Course */
+	/* display: flex;
+	flex-direction: column; */
+
+	/* width: 25%; */
+}
+[class*="col-"] ul {
 	list-style: none;
-	width: 480px;
-	height: 210px;
+	width: 410px;
+	height: 160px;
 	float: left;
 	margin: 20px 20px 20px 130px;
-	display: inline-block;
+	/* display: inline-block; */
 	border: 3px solid #DEE2E3;
 	border-radius: 12px;
 }
-.article li {
-	display: inline-block;
-	width: 231px;
+[class*="col-"] li {
+	/* display: inline-block; */
+	/* width: 231px; */
+	padding-left: 135px;
 	line-height: 1.55em;
 	text-align: left;
-	margin-left: 30px;
+	margin-left: 40px;
 	text-transform: capitalize;
 	font-size: 0.89em;
 }
-.article img {
-	width: 145px;
-	height: 145px;
+[class*="col-"] img {
+	width: 130px;
+	height: 125px;
 	border-radius: 100%;
 	float: left;
-	margin-top: 25px;
+	margin-top: 15px;
 	margin-left: -10px;
+}
+.rando:hover {
+	background: rgba(0,0,0,0.1);
 }
 ul :nth-child(2) {
 	/* Name */
@@ -75,20 +90,22 @@ ul :nth-child(3) {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-[class*='grid_'] {
+[class*='container_'] {
 	max-width: 27.5%;
 	float: left;
+	flex-grow: 1;
+	justify-content: space-around;
 }
-[class*='grid_1'] {
-	margin-left: 100px;
+[class*='menu_1'] {
+	/* margin-left: 100px; */
 }
-[class*='grid_2'] {
-	/* These rules fix the hover/click bug of not working on the entire container of .rando in grid_1 */
+[class*='menu_2'] {
+	/* These rules fix the hover/click bug of not working on the entire container of .rando in menu_1 */
 	margin-left: 0%;
 	width: 0%;
 	margin-right: 525px;
-}[class*='grid_3'] {
-	/* width: 0px fixes the hover/click bug of not working on the entire container of .rando in grid_2 */
+}[class*='menu_3'] {
+	/* width: 0px fixes the hover/click bug of not working on the entire container of .rando in menu_2 */
 	width: 0px;
 }
 .container {
@@ -96,6 +113,12 @@ ul :nth-child(3) {
 	height: 100%;
 }
 /* Modal Styles -------------------------------------------------- */
+
+.icon-circle-left,
+.icon-circle-right {
+	border-radius: 20px;
+}
+
 .modal {
 	position: fixed;
 	top: 0;
@@ -198,13 +221,15 @@ ul :nth-child(3) {
 	line-height: 1.25em;
 	font-size: 2em;
 }
-/* MEDIA QUERIES **************************************************/
-
-@@media min-width {
-
+/* Toggle Class For Hover state */
+.hover {
+	background: rgba(0,0,0,0.1);
 }
-@media only screen and (max-width: 877px){
 
-  .grid_1 {
+
+/* MEDIA QUERIES **************************************************/
+/* @media only screen and (min-width: 680px){
+
+  .menu_1 {
    /*width: 0%;*/
-  }
+  } */
