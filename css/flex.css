@@ -12,7 +12,6 @@ main {
 
 .employee-search {
   width: 300px;
-  /* padding: 0.5em 2em; */
   border-radius: 0.3em;
 }
 
@@ -37,7 +36,6 @@ main {
 	padding-left: 135px;
 	line-height: 1.55em;
 	text-align: left;
-  margin-top: 25px;
 	margin-left: 40px;
 	text-transform: capitalize;
 	font-size: 0.89em;
@@ -48,6 +46,16 @@ main {
   float: left;
   margin-top: 15px;
   margin-left: -10px;
+}
+
+.box {
+  margin-top: 5px;
+}
+
+.name {
+  font-size: 17px !important;
+  font-weight: bold;
+  margin-top: 25px;
 }
 
 /***********************************************************
