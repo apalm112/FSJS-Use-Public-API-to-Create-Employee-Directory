@@ -17,11 +17,10 @@
 			success:  (data) => {
 				// Sets up the data into a local copy so the info will still be available for the modal.
 				Object.assign(cloud, data);
-				console.log(cloud);
 
 				displayRandomUser(data);
 				displayModal(cloud);
-				hoverState('.rando');
+				// hoverState('.rando');
 				appendSearchDiv();
 				filterUser();
 			}
@@ -37,33 +36,33 @@
 		$.each(data.results, function(idx) {
 			// Data is split between 3 columns to match the project mockup.
 			if ( idx <= 3 ) {
-				randoHTML += '<ul class="rando">';
-				randoHTML += '<img src=' + data.results[idx].picture.medium + '>';
+				randoHTML += '<ul class="flex special rando">';
+				randoHTML += '<img class="image" src=' + data.results[idx].picture.medium + '>';
 				randoHTML += '<li class="box name">' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
 				randoHTML += '<li class="box">' + data.results[idx].login.username + '</li>';
 				randoHTML += '<li class="box">' + data.results[idx].location.city + ', ' + data.results[idx].nat + '</li>';
 			}
 				randoHTML += '</ul>';
 			if ( idx >= 4 && idx <= 7 ) {
-				randoHTML2 += '<ul class="rando">';
-				randoHTML2 += '<img src=' + data.results[idx].picture.medium + '>';
+				randoHTML2 += '<ul class="flex special rando">';
+				randoHTML2 += '<img class="image" src=' + data.results[idx].picture.medium + '>';
 				randoHTML2 += '<li class="box name">' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
 				randoHTML2 += '<li class="box">' + data.results[idx].login.username + '</li>';
 				randoHTML2 += '<li class="box">' + data.results[idx].location.city + ', ' + data.results[idx].nat + '</li>';
 			}
 				randoHTML2 += '</ul>';
 			if ( idx >= 8 ) {
-				randoHTML3 += '<ul class="rando">';
-				randoHTML3 += '<img src=' + data.results[idx].picture.medium + '>';
+				randoHTML3 += '<ul class="flex special rando">';
+				randoHTML3 += '<img class="image" src=' + data.results[idx].picture.medium + '>';
 				randoHTML3 += '<li class="box name">' + data.results[idx].name.first + ' ' + data.results[idx].name.last + '</li>';
 				randoHTML3 += '<li class="box">' + data.results[idx].login.username + '</li>';
 				randoHTML3 += '<li class="box">' + data.results[idx].location.city + ', ' + data.results[idx].nat + '</li>';
 			}
 				randoHTML3 += '</ul>';
 	});
-		$('.grid_1').html(randoHTML);
-		$('.grid_2').html(randoHTML2);
-		$('.grid_3').html(randoHTML3);
+		$('.col-1').html(randoHTML);
+		$('.col-2').html(randoHTML2);
+		$('.col-3').html(randoHTML3);
 	}
 
 	const displayModal = (cloud) => {
@@ -73,7 +72,7 @@
 			let targetElement = $('.rando').index(this);
 			// targetElement gets the index of the employee clicked on
 			buildUserModal(cloud, targetElement);
-			$('.modal').fadeIn(200);
+			$('.modal').fadeIn(300);
 			$('.user-modal').toggleClass('out in');
 		});
 	}
@@ -82,7 +81,7 @@
 		// When the closing 'X' is clicked, hide the modal.
 		$('.close').click(function() {
 			emptyUserModal();
-			$('.modal').fadeOut(200);
+			$('.modal').fadeOut(300);
 			$('.user-modal').toggleClass('out in');
 		});
 	}
@@ -102,7 +101,7 @@
 		let cellNum = cloud.results[targetElement].cell;
 		modalHTML += '<li>' + formatCell(cellNum) + '</li>';
 		modalHTML += '<li>' + cloud.results[targetElement].location.street + ' ' + cloud.results[targetElement].location.city + ', ' + cloud.results[targetElement].nat + ' ' + cloud.results[targetElement].location.postcode + '</li>';
-		let dobToFormat = cloud.results[targetElement].dob;
+		let dobToFormat = cloud.results[targetElement].dob.date;
 		modalHTML += '<li>Birthday: ' + formatDob(dobToFormat) + '</li>';
 		modalHTML += '</ul>';
 		$('.modal-user-info').html(modalHTML);
@@ -151,7 +150,6 @@
 			let tes = $leftIdx.valueOf();
 			//Mutate string into integer
 			let tes1 = parseInt(tes);
-			console.log(tes);
 			// Set data attribute to new index of employee object in the cloud object so next arrow click will produce the correct employee info.
 			$duh.attr('data', tes1);
 			if (tes1 < 11 && circle === $right) {
@@ -159,40 +157,14 @@
 				tes1 += 1;
 				emptyUserModal();
 				buildUserModal(cloud, tes1);
-			} else if (tes1 > 11 && circle === $left) {
+			} else if (tes1 > 0 && circle === $left) {
 				// When at employee index 0, left arrow click stops.
 				tes1 -= 1;
-				console.log(tes1);
 				emptyUserModal();
 				buildUserModal(cloud, tes1);
 			}
 		});
 	}
-	// else {
-	// 	tes1 = 0;
-	// }  else {
-	// 	test1 = 11;
-	// }
-	// function clickRightHover(cloud) {
-	// 	// Control the display of next employee's info in modal.
-	// 	$right.click(function() {
-	// 		// Get the data attribute of the modal-user-info
-	// 		let $duh = $('.modal-user-info');
-	// 		let $rightIdx = $duh[0].getAttribute('data');
-	// 		// Set data attribute to new idx value, so +1
-	// 		let test = $rightIdx.valueOf();
-	// 		let test1 = parseInt(test);
-	// 		$duh.attr('data', test1);
-	// 		// When at employee index 11, righ arrow click stops.
-	// 		if (test1 <= 10) {
-	// 			test1 += 1;
-	// 			emptyUserModal();
-	// 			buildUserModal(cloud, test1);
-	// 		} else {
-	// 			test1 = 11;
-	// 		}
-	// 	});
-	// }
 
 	const appendSearchDiv = ()=> {
 		// Dynamically create & append search div & input feature so user can search the currently displayed employees.
