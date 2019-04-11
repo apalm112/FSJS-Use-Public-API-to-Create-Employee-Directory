@@ -10,6 +10,12 @@ main {
   margin: 0 8%;
 }
 
+.employee-search {
+  width: 300px;
+  /* padding: 0.5em 2em; */
+  border-radius: 0.3em;
+}
+
 .special {
 	list-style: none;
   height: 160px;
